@@ -19,14 +19,12 @@ export class CategoryAdminComponent implements OnInit{
 
     ngOnInit(): void {
       this.Title ="Danh Sách Loại sản phẩm  "
-
       this.Categories();
     }
     Categories(){
       this.categoryy.getcategories().subscribe((res: any)=>{
-      
         this.categorys = res;
-        console.log(this.categorys)
+        
       })
     }
     // DELETE
@@ -44,7 +42,6 @@ export class CategoryAdminComponent implements OnInit{
             this.Categories();
           });
         } else {
-          // User clicked "Hủy" or closed the dialog
           console.log('Xóa sản phẩm đã bị hủy bởi người dùng.');
         }
       });

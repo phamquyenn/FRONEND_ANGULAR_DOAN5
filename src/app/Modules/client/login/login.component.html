@@ -34,7 +34,7 @@
                             <strong>{{ checkError }}!</strong> 
                         </div>
                         <div class="default-form-box">
-                            <label>Username or email <span>*</span></label>
+                            <label>Email <span>*</span></label>
                             <input type="text" class="form-control" formControlName="email" placeholder="Nhập email">
                             <div *ngIf="allform['email'].hasError('required') && allform['email'].touched">
                                 Hãy nhập Email!
@@ -47,7 +47,7 @@
                             </div>                         
                         </div>
                         <div class="default-form-box">
-                            <label>Passwords <span>*</span></label>
+                            <label>Mật Khẩu <span>*</span></label>
                             <input type="password" class="form-control" formControlName="password" placeholder="Nhập mật khẩu">
                             <div *ngIf="allform['password'].hasError('required') && allform['password'].touched">
                                 Hãy nhập mật khẩu!
@@ -57,7 +57,7 @@
                             </div>                            
                         </div>
                         <div class="login_submit">
-                            <button class="btn btn-md btn-black-default-hover mb-4" type="submit" [disabled]="formLogin.invalid">login</button>
+                            <button class="btn btn-md btn-black-default-hover mb-4" type="submit" [disabled]="formLogin.invalid">Đăng Nhập </button>
                             <label class="checkbox-default mb-4" for="offer">
                                 <input type="checkbox" id="offer">
                                 <span>Lưu mật khẩu</span>

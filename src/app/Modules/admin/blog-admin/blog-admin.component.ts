@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from 'src/app/services/admin/blog.service';
+import { ProductsService } from 'src/app/services/admin/products.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,8 +13,9 @@ export class BlogAdminComponent implements OnInit {
   p: number=1;
   blogs: any[] = []; 
   pageSize: number = 10;
+  productImage: string = '';
 
-  constructor(private blog:BlogService){
+  constructor(private blog:BlogService, private image: ProductsService){
 
   }
 
@@ -28,6 +30,24 @@ export class BlogAdminComponent implements OnInit {
       this.blogs =res;
     })
   }
+  // 
+  loadProductImage(filename: any) {
+    this.image.getProductImage(filename).subscribe(
+      (response: any) => {
+        this.productImage = response.filename;
+        console.log(this.productImage)
+      },
+      (error) => {
+        console.error('Lỗi khi lấy tên ảnh:', error);
+      }
+    );
+  }
+
+  getProductImageUrl(filename: string): string {
+    return `http://localhost:3000/image/getproductimage/${filename}`;
+    
+  }
+  // 
   onDelete(id: number) {
     Swal.fire({
       title: 'Bạn có chắc chắn muốn xóa sản phẩm này?',

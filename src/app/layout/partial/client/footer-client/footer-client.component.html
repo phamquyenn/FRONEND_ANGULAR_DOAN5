@@ -36,10 +36,9 @@
                  <!-- Start Footer Single Item -->
                  <div class="footer-widget-single-item footer-widget-color--pink" data-aos="fade-up"  data-aos-delay="400">
                      <h5 class="title">THỂ LOẠI</h5>
-                     <ul class="footer-nav">
-                         <li><a href="#">Nước hoa nam</a></li>
-                         <li><a href="#">Nước hoa nữ</a></li>
-                         <li><a href="#">Nước hoa unisex</a></li>
+                     <ul class="footer-nav" *ngFor="let all of categories">
+                         <li><a routerLink="/client/categories/{{ all.category_id }}">{{ all.category_name }}</a></li>
+                         
                      </ul>
                  </div>
                    <!-- End Footer Single Item -->

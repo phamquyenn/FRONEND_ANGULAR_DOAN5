@@ -45,7 +45,12 @@
                                     <tbody>
                                         <!-- Start Cart Single Item-->
                                         <tr *ngFor=" let cart of carts, let i=index">
-                                            <td class="product_thumb"><a href="product-details-default.html"><img src="assets/images/product/default/home-3/{{ cart.img }}" alt=""></a></td>
+                                            <td class="product_thumb">
+                                                <a href="product-details-default.html">
+                                                    <!-- <img src="assets/images/product/default/home-3/{{ cart.img }}" alt=""> -->
+                                                    <img [src]="getProductImageUrl(cart.img)" alt="{{ cart.img}}" />
+                                                </a>
+                                            </td>
                                             <td class="product_name"><a href="product-details-default.html">{{ cart.name }}</a></td>
                                             <td class="product-price">${{ cart.price }}.00</td>
                                             <td class="product_quantity"> <input min="1" max="100" [value]="cart.quantity" type="number" (change)="updateQuantity(i, $event)" ></td>
@@ -91,16 +96,8 @@
                                     <p>Tổng tiền</p>
                                     <p class="cart_amount">${{ totalPrice }}.00</p>
                                 </div>
-                                <div class="cart_subtotal ">
-                                    <p>Tổng số lượng</p>
-                                    <p class="cart_amount"> {{ totalQuantity }}</p>
-                                </div>
-                                <div class="cart_subtotal">
-                                    <p>Thanh Toán</p>
-                                    <p class="cart_amount">$215.00</p>
-                                </div>
                                 <div class="checkout_btn">
-                                    <a href="#" class="btn btn-md btn-golden">Đặt hàng</a>
+                                    <a class="btn btn-md btn-golden" (click)="checkout()">Đặt hàng</a>
                                 </div>
                             </div>
                         </div>

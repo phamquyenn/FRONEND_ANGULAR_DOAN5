@@ -7,6 +7,8 @@ import { BlogComponent } from './blog/blog.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CartComponent } from './cart/cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FormsModule } from '@angular/forms';
+
 import { HttpClient } from '@angular/common/http';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -14,6 +16,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AccountComponent } from './account/account.component';
+import { ContactComponent } from './contact/contact.component';
+import { PaymentComponent } from './payment/payment.component';
+import { OnlineCheckoutComponent } from './online-checkout/online-checkout.component';
+
+
+
 @NgModule({
     declarations:[
     HomeComponent,
@@ -25,7 +34,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ProductsListComponent,
     ProductDetailComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AccountComponent,
+    ContactComponent,
+    PaymentComponent,
+    OnlineCheckoutComponent
 
    
   ],
@@ -33,7 +46,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
         ClientRoutingModule,
         CommonModule, 
         ReactiveFormsModule,
-        NgxPaginationModule
-    ]
+        NgxPaginationModule,
+        FormsModule
+
+    ],
+
 })
-export class ClientModule{}
+export class ClientModule{
+ 
+}

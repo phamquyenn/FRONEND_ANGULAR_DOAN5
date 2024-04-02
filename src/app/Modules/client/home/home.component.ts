@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ProductsService } from 'src/app/services/admin/products.service';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +10,19 @@ import { HomeGetDataService } from 'src/app/services/client/product.service';
 })
 export class HomeComponent {
 
-  constructor(private product: HomeGetDataService) { }
+  constructor(private product: HomeGetDataService, private image: ProductsService) { }
   products: any[] = [];
   brand: any[] = [];
   blog: any[] = [];
   bestsale : any[] = [];
   carts: any = this.product.getcarts();
 
+  productImage: string = '';
+
   ngOnInit() {
     this.product.getnew().subscribe(res => {
       this.products = res[0];
+      
     });
 
     this.product.getbrand().subscribe(res => {
@@ -29,10 +34,27 @@ export class HomeComponent {
     });
     this.product.getbestsale().subscribe(res =>{
       this.bestsale =res[0]
-      // console.log(res)
+      
     })
   }
+  // 
+  loadProductImage(filename: any) {
+    this.image.getProductImage(filename).subscribe(
+      (response: any) => {
+        this.productImage = response.filename;
+        console.log(this.productImage)
+      },
+      (error) => {
+        console.error('Lỗi khi lấy tên ảnh:', error);
+      }
+    );
+  }
 
+  getProductImageUrl(filename: string): string {
+    return `http://localhost:3000/image/getproductimage/${filename}`;
+    
+  }
+  // 
   onAddTocart(productdetails: any) {
     let idx = this.carts.findIndex((item: any) => item.id == productdetails.product_id);
 
@@ -55,9 +77,13 @@ export class HomeComponent {
     }
 
     this.product.saveCart(this.carts);
+    this.product.updateCartAndItemCount(this.carts);
 
-    if (confirm('Thêm vào giỏ hàng thành công')) {
-      console.log('Lưu bảng thành công!');
-    }
+    Swal.fire({
+      icon: 'success',
+      title: 'Thêm vào giỏ hàng thành công!',
+      showConfirmButton: false,
+      timer: 1500 // Tắt thông báo sau 1.5 giây
+    });
   }
 }

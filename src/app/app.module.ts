@@ -12,6 +12,8 @@ import { AdminModule } from './Modules/admin/admin.module';
 import { TopbaComponent } from './layout/partial/admin/topba/topba.component';
 import { TemplateModule } from './layout/template/template.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AuthGuardService } from './services/admin/auth-gaurd.service';
 
 
 
@@ -32,16 +34,11 @@ import { HttpClientModule } from '@angular/common/http';
     ClientModule,
     AdminModule,
     TemplateRoutingModule,
-  HttpClientModule,
-
-
-  
-
-  
-  
+    MatDialogModule,
+    HttpClientModule
  
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

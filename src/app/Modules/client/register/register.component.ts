@@ -2,6 +2,7 @@ import { ReadVarExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
+import { UserService } from 'src/app/services/client/user.service';
 
 @Component({
   selector: 'app-register',
@@ -14,16 +15,17 @@ export class RegisterComponent implements OnInit{
   checkError : string ='';
   // Form
   formRegister : FormGroup = new FormGroup({
-    username : new FormControl('', [Validators.required, Validators.minLength(15)]),
+    name : new FormControl('', [Validators.required, Validators.minLength(10)]),
+    address: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required,Validators.minLength(10)]),
     email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(20)]),
     password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{3,}$/)]),
-    role: new FormControl('client')
   });
   get allform(){
     return this.formRegister.controls;  
    }
 
-  constructor (private register:HomeGetDataService){}
+  constructor (private reg:UserService){}
 
   ngOnInit(): void {
     
@@ -34,7 +36,7 @@ export class RegisterComponent implements OnInit{
       return;
     }
     
-    this.register.Register(this.formRegister.value).subscribe((res : any ) =>{
+    this.reg.register(this.formRegister.value).subscribe((res : any ) =>{
       if(res.status == false){
         this.checkError = res.result;
       }else{

@@ -42,9 +42,7 @@ export class UpdateCategoryComponent implements OnInit {
       this.Id = params.get('id');
 
       if (this.Id) {
-        this.Title = 'Cập Nhật Sản Phẩm';
-
-        // Lấy thông tin sản phẩm và hiển thị hình ảnh
+        this.Title = 'Cập Nhật Loại Sản Phẩm';
         this.update.getonceCategory(this.Id).subscribe((res) => {
           const list = res[0];
           
@@ -57,7 +55,7 @@ export class UpdateCategoryComponent implements OnInit {
 
   onSubmit(): void {
     if (!this.Id) {
-      console.error('Product ID is not available.');
+      console.error('loại sản phẩm không tồn tại.');
       return;
     }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BrandService } from 'src/app/services/admin/brand.service';
+import { ProductsService } from 'src/app/services/admin/products.service';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
 import Swal from 'sweetalert2';
 
@@ -14,8 +15,9 @@ export class BrandAdminComponent implements OnInit {
   p: number=1;
   brands: any[] = []; 
   pageSize: number = 10;
+  beandImage :  string = '';
 
-  constructor(private brand:BrandService){}
+  constructor(private brand:BrandService, private image: ProductsService){}
 
   ngOnInit(): void {
     this.Title=" Danh sách thương hiệu";
@@ -29,9 +31,27 @@ export class BrandAdminComponent implements OnInit {
 
     });
   }
+  // 
+  loadProductImage(filename: any) {
+    this.image.getProductImage(filename).subscribe(
+      (response: any) => {
+        this.beandImage = response.filename;
+        console.log(this.beandImage)
+      },
+      (error) => {
+        console.error('Lỗi khi lấy tên ảnh:', error);
+      }
+    );
+  }
+
+  getProductImageUrl(filename: string): string {
+    return `http://localhost:3000/image/getproductimage/${filename}`;
+    
+  }
+  // 
   onDelete(id: number) {
     Swal.fire({
-      title: 'Bạn có chắc chắn muốn xóa sản phẩm này?',
+      title: 'Bạn có chắc chắn muốn xóa?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Đồng ý',
@@ -43,8 +63,7 @@ export class BrandAdminComponent implements OnInit {
           this.brandview();
         });
       } else {
-        // User clicked "Hủy" or closed the dialog
-        console.log('Xóa sản phẩm đã bị hủy bởi người dùng.');
+        console.log('Xóa thương hiệu đã bị hủy bởi người dùng.');
       }
     });
   }

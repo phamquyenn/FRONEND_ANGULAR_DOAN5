@@ -24,7 +24,6 @@ export class ProductAdminComponent implements OnInit {
     ngOnInit(){
 
       this.getallproduct();
-      
     }
     // list 
     getallproduct(){
@@ -36,6 +35,23 @@ export class ProductAdminComponent implements OnInit {
         console.log(this.items)
         
       })
+    }
+    // 
+    loadProductImage(filename: any) {
+      this.product.getProductImage(filename).subscribe(
+        (response: any) => {
+          this.productImage = response.filename;
+          console.log(this.productImage)
+        },
+        (error) => {
+          console.error('Lỗi khi lấy tên ảnh:', error);
+        }
+      );
+    }
+  
+    getProductImageUrl(filename: string): string {
+      return `http://localhost:3000/image/getproductimage/${filename}`;
+      
     }
     // DELETE
     onDelete(product_id: number) {

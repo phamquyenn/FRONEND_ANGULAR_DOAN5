@@ -8,14 +8,17 @@ import { HomeGetDataService } from 'src/app/services/client/product.service';
 })
 export class HeaderClientComponent implements OnInit {
   account:any;
+  cartItemCount: number = 0;
 
-  constructor( ) {}
+  constructor( private home:HomeGetDataService ) {}
 
   ngOnInit(): void {
-    let storage =sessionStorage.getItem('login')
+    let storage =sessionStorage.getItem('userInfo')
+    // console.log(storage)
     if(storage){
       this.account = JSON.parse(storage);
     }
+    this.cartItemCount = this.home.getCartItemCount();
   }
   onLogout() {
     sessionStorage.clear();

@@ -11,6 +11,11 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashbroadComponent } from '../admin/dashbroad/dashbroad.component';
+import { HomeGetDataService } from 'src/app/services/client/product.service';
+import { AccountComponent } from './account/account.component';
+import { ContactComponent } from './contact/contact.component';
+import { AuthGuardService } from 'src/app/services/admin/auth-gaurd.service';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {
@@ -68,12 +73,25 @@ const routes: Routes = [
     component:RegisterComponent,
     title:'client-register'
   },
-  // admin
   {
-    path:'dashbroad',
-    component:DashbroadComponent,
-    title:'admin-dashbroad'
+    path:'account',
+    component:AccountComponent,
+    title:'Account'
   },
+  
+  {
+    path:'contact',
+    component:ContactComponent,
+    title:'Contact'
+  },
+  {
+    path:'payment',
+    component:PaymentComponent,
+    title:'payment'
+  },
+
+
+
 
 ];
 

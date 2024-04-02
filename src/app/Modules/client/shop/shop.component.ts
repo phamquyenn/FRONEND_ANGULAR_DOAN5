@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/services/admin/products.service';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-shop',
@@ -7,13 +9,14 @@ import { HomeGetDataService } from 'src/app/services/client/product.service';
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent {
-  constructor( private shop :HomeGetDataService,private product: HomeGetDataService){ }
+  constructor( private shop :HomeGetDataService,private product: HomeGetDataService, private image: ProductsService){ }
   productall: any[]=[];
   category: any[]=[];
   brands: any[]=[];
   carts: any = this.shop.getcarts();
   p: number=1;
   pageSize: number = 10;
+  productImage : string= '';
 
 
 
@@ -36,6 +39,24 @@ export class ShopComponent {
       
     })
   }
+  // 
+  loadProductImage(filename: any) {
+    this.image.getProductImage(filename).subscribe(
+      (response: any) => {
+        this.productImage = response.filename;
+        console.log(this.productImage)
+      },
+      (error) => {
+        console.error('Lỗi khi lấy tên ảnh:', error);
+      }
+    );
+  }
+
+  getProductImageUrl(filename: string): string {
+    return `http://localhost:3000/image/getproductimage/${filename}`;
+    
+  }
+  // 
   onAddTocart(productdetails: any) {
     let idx = this.carts.findIndex((item: any) => item.id == productdetails.product_id);
 
@@ -59,8 +80,27 @@ export class ShopComponent {
 
     this.product.saveCart(this.carts);
 
-    if (confirm('Thêm vào giỏ hàng thành công')) {
-      console.log('Lưu bảng thành công!');
-    }
+    Swal.fire({
+      icon: 'success',
+      title: 'Thêm vào giỏ hàng thành công!',
+      showConfirmButton: false,
+      timer: 1500 // Tắt thông báo sau 1.5 giây
+    });
   }
+  // 
+  filterProductsByPrice(event: any) {
+    const selectedPrice = event.target.value;
+    if (selectedPrice === '10-50') {
+
+        this.shop.getproductall().subscribe((res: any[]) => {
+            this.productall = res.filter(product => product.price >= 10 && product.price <= 50);
+        });
+    } 
+    else if(selectedPrice === '60-100'){
+      this.shop.getproductall().subscribe((res: any[]) => {
+          this.productall = res.filter(product => product.price >= 60 && product.price <= 100);
+      });
+    } 
+  } 
+
 }

@@ -10,10 +10,8 @@
                         <table class="table ">
                             <thead>
                                 <tr>
-                                    <th class="serial">STT</th>
                                     <th class="avatar">Tên </th>
                                     <th>Ảnh</th>
-                                    <th>Sửa </th>
                                     <th>Xóa </th>
                                 </tr>
                             </thead>
@@ -25,15 +23,8 @@
                                     <td class="avatar">
                                         <div class="round-img">
                                             <img [src]="getProductImageUrl(all.filename)" alt="{{ all.filename}}" />
-                                            <!-- <a href="#"><img class="rounded-circle" [src]="getImageUrl(all.product_image) | async" alt=""></a> -->
+                                            
                                         </div>
-                                    </td>
-                                    <td>
-                                       <span>
-                                            <a href="#">
-                                                <button type="button" class="btn btn-warning">Sửa</button>
-                                            </a>
-                                        </span>
                                     </td>
                                     <td>
                                        <span>

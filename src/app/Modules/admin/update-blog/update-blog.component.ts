@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/admin/blog.service';
+import { ProductsService } from 'src/app/services/admin/products.service';
+import { HomeGetDataService } from 'src/app/services/client/product.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,6 +16,7 @@ export class UpdateBlogComponent implements OnInit {
   file: any | null = null;
   preview: any | null = null;
   id: string | null = null;
+  blogImage: string = '';
 
   profileForm: FormGroup;
 
@@ -122,5 +125,7 @@ export class UpdateBlogComponent implements OnInit {
       }
     );
   }
+  // 
+  
 
 }

@@ -48,7 +48,7 @@ export class AddProductComponent implements OnInit{
 
     this.add.getbrand().subscribe(res => {
       this.brands = res;
-      console.log(this.brands);
+
     });
   }
 

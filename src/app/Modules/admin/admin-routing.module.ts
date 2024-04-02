@@ -14,12 +14,29 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { UpdateBrandComponent } from './update-brand/update-brand.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { CustomerComponent } from './customer/customer.component';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import { AuthGuardService } from 'src/app/services/admin/auth-gaurd.service';
+
+
+
 
 const routes: Routes = [
-
+  {
+    path:'register',
+    component:RegisterComponent
+  },
+  {
+    path:'login',
+    component:LoginComponent
+  },
   {
     path:'dashbroad',
-    component:DashbroadComponent
+    component:DashbroadComponent,
+    
   },
   {
     path:'product-admin',
@@ -45,6 +62,10 @@ const routes: Routes = [
   {
     path:'product-update/:id',
     component:UpdateProductAdminComponent
+  },
+  {
+    path:'update-customer/:id',
+    component:UpdateCustomerComponent
   },
   
   {
@@ -74,6 +95,14 @@ const routes: Routes = [
   {
     path:'update-category/:id',
     component:UpdateCategoryComponent
+  },
+  {
+    path:'customer',
+    component:CustomerComponent
+  },
+  {
+    path:'add-customer',
+    component:AddCustomerComponent
   },
 ];
 

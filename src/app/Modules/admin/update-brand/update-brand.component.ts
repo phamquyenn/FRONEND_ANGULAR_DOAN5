@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrandService } from 'src/app/services/admin/brand.service';
 import Swal from 'sweetalert2';
@@ -25,11 +25,10 @@ export class UpdateBrandComponent implements OnInit{
   ){
     this.profileForm = this.fb.group({
       Brand_id: [''],
-      name: [''],
-      address: [''],
-      phone: [''],
-      email: [''],
-      brand_image: [''],
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern('[0-9]+')]],
+      email: ['', [Validators.required, Validators.email]]
 
     });
   }
@@ -80,7 +79,7 @@ export class UpdateBrandComponent implements OnInit{
   }
   onSubmit(){
     if (!this.id) {
-      console.error('Product ID is not available.');
+      console.error('Thương hiệu không tồn tại.');
       return;
     }
 

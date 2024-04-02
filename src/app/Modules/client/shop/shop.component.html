@@ -72,7 +72,7 @@
                                 <div class="sort-tablist d-flex align-items-center">
                                     <ul class="tablist nav sort-tab-btn">
                                         <li><a class="nav-link active" data-bs-toggle="tab" href="#layout-3-grid"><img src="assets/images/icons/bkg_grid.png" alt=""></a></li>
-                                        <li><a class="nav-link" data-bs-toggle="tab" href="#layout-list"><img src="assets/images/icons/bkg_list.png" alt=""></a></li>
+                                       
                                     </ul>
 
                                     <!-- Start Page Amount -->
@@ -86,17 +86,16 @@
                                     <label class="mr-2">Sắp xếp:</label>
                                     <form action="#">
                                         <fieldset>
-                                            <select name="speed" id="speed">
-                                                <option>Theo giá thấp lên cao</option>
-                                                <option >Theo Giá từ cao xuống thấp</option>
-                                                <option>Theo bảng chữ cái</option>
+                                            <select name="speed" id="speed" (change)="filterProductsByPrice($event)">
+                                                <option value="10-50">$10 đến $50</option>
+                                               
+                                                <option value="60-100">$50 đến $100</option>
+
                                             </select>
                                         </fieldset>
                                     </form>
-                                </div> <!-- End Sort Select Option -->
-
-                                
-
+                                </div>                                
+                                 <!-- End Sort Select Option -->
                             </div> <!-- Start Sort Wrapper Box -->
                         </div>
                     </div>
@@ -116,8 +115,8 @@
                                                 <div  class="product-default-single-item product-color--golden" data-aos="fade-up"  data-aos-delay="0">
                                                     <div class="image-box">
                                                         <a href="/client/productDetail/{{ all.product_id}}" class="image-link">
-                                                            <img src="assets/images/product/default/home-3/{{ all.product_image }}" alt="">
-                                                            
+                                                            <!-- <img src="assets/images/product/default/home-3/{{ all.product_image }}" alt=""> -->
+                                                            <img [src]="getProductImageUrl(all.product_image)" alt="{{ all.product_image}}" />
                                                         </a>
                                                         <div class="action-link">
                                                             <div class="action-link-left">

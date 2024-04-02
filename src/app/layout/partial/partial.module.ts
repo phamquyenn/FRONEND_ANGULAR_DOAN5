@@ -7,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FooterAdminComponent } from './admin/footer-admin/footer-admin.component';
 import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
 import { TopbaComponent } from './admin/topba/topba.component';
-import { SilerClientComponent } from './client/siler-client/siler-client.component';
+
 @NgModule({
     declarations:[
         
@@ -17,7 +17,7 @@ import { SilerClientComponent } from './client/siler-client/siler-client.compone
      FooterAdminComponent,
      HeaderAdminComponent,
      TopbaComponent,
-     SilerClientComponent
+     
   ],
     imports:[
         CommonModule,
@@ -29,7 +29,9 @@ import { SilerClientComponent } from './client/siler-client/siler-client.compone
         FooterClientComponent,
         FooterAdminComponent,
         HeaderAdminComponent,
-        TopbaComponent
+        TopbaComponent,
+        
+
         
 
     ]

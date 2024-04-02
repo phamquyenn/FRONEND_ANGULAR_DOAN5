@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, Observer, catchError, map ,of } from "rxjs";
+import { Observable, Observer, Subject, catchError, map ,of } from "rxjs";
 
 const host = "http://localhost:3000"
 @Injectable({
@@ -56,14 +56,17 @@ export class HomeGetDataService{
     getproductsbycategoriesID(id:number){
         return this.httpClient.get<any[]>(`${host}/categories/GetProductsByCategory/${id}`)
     }
-
+    // GetProductByBrand
+    GetProductByBrand(id:number){
+        return this.httpClient.get<any[]>(`${host}/product/getproductsbybrand/${id}`)
+    }
     // getproduct by id
     getProductById(id:number){
         return this.httpClient.get<any[]>(`${host}/product/getonce/${id}`)
     }
     // CheckLogin
     checkLogin(data:any){
-        return this.httpClient.post<any>(`${host}/login/getlogin`, data);
+        return this.httpClient.post<any>(`${host}/login/dangnhap`, data);
     }
 
     // Register
@@ -85,11 +88,13 @@ export class HomeGetDataService{
             return [];
         }
     }
+    // Hàm này nhận một đối tượng giỏ hàng (carts) làm đối số
     saveCart(carts:any){
         let cartJson= JSON.stringify(carts);
         sessionStorage.setItem('cart',cartJson);
 
     }
+    // tính và trả về tổng giá của tất cả các mục trong giỏ hàng
     getCartToTalPrice(){
         let carts = this.getcarts();
         let total = 0;
@@ -99,13 +104,28 @@ export class HomeGetDataService{
         });
         return total;
     }
+    // tính và trả về tổng số lượng của tất cả các mục trong giỏ hàng
     getCartToTalQuantity(){
         let carts = this.getcarts();
         let total = 0;
         carts.forEach((item: any) => {
-            total += item.quantity 
-        });
+            total += item.quantity;
+          });
         return total;
     }
+    // Tính số lượng trong cart
+    getCartItemCount(): number {
+        return this.getCartToTalQuantity();
+      }
+    // 
+    updateCartAndItemCount(carts: any[]) {
+        this.saveCart(carts);
+      }
+    private dashbroadComponentSubject = new Subject<any>();
+    dashbroadComponent$ = this.dashbroadComponentSubject.asObservable();
+
+    setDashbroadComponent(component: any) {
+    this.dashbroadComponentSubject.next(component);
+  }
     
 }

@@ -61,21 +61,25 @@
                                                 </div>
                                             </div>
                                         </li>
+                                        
                                         <li class="has-dropdown">
                                             <a href="#">Giới thiệu  <i class="fa fa-angle-down"></i></a>
                                             <!-- Sub Menu -->
                                             <ul class="sub-menu">
-                                                <li><a href="blog-full-width.html">Khám phá</a></li>
+                                                <!-- <li><a href="blog-full-width.html">Khám phá</a></li> -->
                                                 <li><a routerLink="/client/blog">Tin Tức</a></li>
 
                                             </ul>
                                         </li>
-                                        
+                                        <li class="has-megaitem">
+                                            <a class="active main-menu-link" routerLink="/client/contact">Contact</a>
+                                        </li>
                                         <li>
                                             <a routerLink="/client/page-not-found">420 - PERFUME</a>
                                         </li>
                                         <li class="has-dropdown">
-                                            <a href="#">Account  <i class="fa fa-angle-down"></i></a>
+                                            <a href="#" *ngIf="account">{{ account.name }}  <i class="fa fa-angle-down"></i></a>
+                                            <a href="#" *ngIf="!account">Login<i class="fa fa-angle-down"></i></a>
                                             <!-- Sub Menu -->
                                             <ul class="sub-menu">
                                                 <li>
@@ -84,11 +88,12 @@
                                                 <li>
                                                     <a routerLink="/client/register" *ngIf="!account" >Đăng kí</a>
                                                 </li>
+                                                
                                                 <li>
-                                                    <a routerLink="#"*ngIf="account">{{ account.username }}</a>    
+                                                    <a routerLink="/client/account" *ngIf="account">Tài khoản</a>    
                                                 </li>
                                                 <li>
-                                                    <a routerLink="#" *ngIf="account" (click)="onLogout()">LogOut</a>
+                                                    <a routerLink="#" *ngIf="account" (click)="onLogout()">Đăng Xuất</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -108,7 +113,7 @@
                                 <li>
                                     <a routerLink="/client/cart" class="offcanvas-toggle">
                                         <i class="icon-bag"></i>
-                                        <span class="item-count">3</span>
+                                        <span class="item-count">{{ cartItemCount }}</span>
                                     </a>
                                 </li>
                                 <li>
@@ -317,9 +322,9 @@
         <button type="button" class="close">×</button>
         <form>
             <input type="search" placeholder="type keyword(s) here" />
-            <button type="submit" class="btn btn-lg btn-pink">Search</button>
+            <button type="submit" class="btn btn-lg btn-pink">Tìm kiếm</button>
         </form>
     </div>
     <!-- End Offcanvas Search Bar Section -->
         <!-- Offcanvas Overlay -->
-        <div class="offcanvas-overlay"></div>
+    <div class="offcanvas-overlay"></div>

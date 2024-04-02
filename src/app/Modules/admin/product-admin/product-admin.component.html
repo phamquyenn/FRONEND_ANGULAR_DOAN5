@@ -39,10 +39,16 @@
                                 <tr *ngFor="let all of items | paginate: { itemsPerPage: 5, currentPage: p }"  class=" pb-0">
                                     <td class="serial">{{ all.product_id }}</td>
                                     <td class="serial">{{ all.product_name }}</td>
-                                    <td class="avatar">
+                                    <!-- <td class="avatar">
                                         <div class="round-img">
                                             <a href="#"><img class="rounded-circle" src="assets/images/product/default/home-3/{{ all.product_image }}"  alt=""></a>
-                                            <!-- <a href="#"><img class="rounded-circle" [src]="getImageUrl(all.product_image) | async" alt=""></a> -->
+                                           
+                                        </div>
+                                    </td> -->
+                                    <td class="avatar">
+                                        <div class="round-img">
+                                            <img [src]="getProductImageUrl(all.product_image)" alt="{{ all.product_image}}" />
+                                           
                                         </div>
                                     </td>
                                     <td> {{ all.description }} </td>

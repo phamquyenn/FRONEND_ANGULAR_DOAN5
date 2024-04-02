@@ -20,8 +20,6 @@ export class AddBrandComponent implements OnInit {
     address : new FormControl(''),
     phone : new FormControl(''),
     email : new FormControl(''),
-
-
   })
 
   constructor( private add:BrandService, private fb: FormBuilder, private router: Router){
@@ -79,7 +77,7 @@ export class AddBrandComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         }).then(() => {
-          this.router.navigate(['admin/brand-admin']);
+          this.router.navigate(['/admin/brand-admin']);
         });
       } else {
         // Hiển thị SweetAlert2 lỗi

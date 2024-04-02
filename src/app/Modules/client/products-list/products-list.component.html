@@ -111,17 +111,21 @@
                                     <!-- Start Grid View Product -->
                                     <div  class="tab-pane active show sort-layout-single" id="layout-3-grid">
                                         <div class="row" >
-                                            <div *ngFor="let all of productall" class="col-xl-4 col-sm-6 col-12">
+                                            <div *ngFor="let all of productall | paginate: { itemsPerPage: 9, currentPage: p }" class="col-xl-4 col-sm-6 col-12">
                                                 <!-- Start Product Default Single Item -->
                                                 <div  class="product-default-single-item product-color--golden" data-aos="fade-up"  data-aos-delay="0">
                                                     <div class="image-box">
                                                         <a href="/client/productDetail/{{ all.product_id}}" class="image-link">
-                                                            <img src="assets/images/product/default/home-3/{{ all.product_image }}" alt="">
+                                                            <!-- <img src="assets/images/product/default/home-3/{{ all.product_image }}" alt=""> -->
+                                                            <img [src]="getProductImageUrl(all.product_image)" alt="{{ all.product_image}}" />
                                                             
                                                         </a>
                                                         <div class="action-link">
                                                             <div class="action-link-left">
-                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
+                                                                <button type="button" (click)="onAddTocart(all)">
+                                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
+                                                                </button>
+                                                                <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a> -->
                                                             </div>
                                                             <div class="action-link-right">
                                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>

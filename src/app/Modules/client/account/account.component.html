@@ -1,0 +1,132 @@
+
+<div class="breadcrumb-section breadcrumb-bg-color--golden">
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="breadcrumb-title" *ngIf="account">{{ account.name }}</h3>
+                    <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                        <nav aria-label="breadcrumb">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <!-- <li><a href="shop-grid-sidebar-left.html">Shop</a></li> -->
+                                <li class="active" aria-current="page"*ngIf="account">{{ account.name }}</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ...:::: Start Account Dashboard Section:::... -->
+<div class="account-dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3" >
+                <!-- Nav tabs -->
+                <div class="dashboard_tab_button" data-aos="fade-up"  data-aos-delay="0">
+                    <ul role="tablist" class="nav flex-column dashboard-list">
+                        <!-- <li><a routerLink="/client/dashboard" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover active">Dashboard</a></li> -->
+                        <li> <a href="#orders" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Đơn Hàng</a></li>
+                        <li><a href="#address" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Địa Chỉ</a></li>
+                        <li><a href="#account-details" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Thông tin cá nhân</a></li>
+                        <li><a href="#" class="nav-link btn btn-block btn-md btn-black-default-hover" (click)="onLogout()">Đăng Xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                <!-- Tab panes -->
+                <div class="tab-content dashboard_content" data-aos="fade-up"  data-aos-delay="200">
+                    <div class="tab-pane fade show active" id="dashboard">
+                        <h4>Xin Chào </h4>
+                        <p>Bạn có thể thêm địa chỉ và thông tin cá nhân.<a href="#">những đơn đặt hàng gần đây</a>, quản lý  <a href="#">địa chỉ giao hàng và thanh toán</a> và <a href="#">Chỉnh sửa mật khẩu và chi tiết tài khoản của bạn.</a></p>
+                    </div>
+                    <div class="tab-pane fade" id="orders">
+                        <h4>Đơn Hàng</h4>
+                        <div class="table_page table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Đơn</th>
+                                        <th>Ngày</th>
+                                        <th>Trạng thái</th>
+                                        <th>Tổng </th>
+                                        <th>Chi tiết </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>May 10, 2018</td>
+                                        <td><span class="success">Completed</span></td>
+                                        <td>$25.00 for 1 item </td>
+                                        <td><a href="cart.html" class="view">view</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>May 10, 2018</td>
+                                        <td>Processing</td>
+                                        <td>$17.00 for 1 item </td>
+                                        <td><a href="cart.html" class="view">view</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="address">
+                        <p>Địa chỉ sẽ được sử dụng trên trang thanh toán theo mặc định.</p>
+                        <h5 class="billing-address">{{ account.name }}</h5>
+                        <p><strong>{{ account.phone }}</strong></p>
+                        <address>
+                            {{ account.address }}<br>
+                        </address>
+                        <a href="#" class="view">Sửa</a>
+                    </div>
+                    <div class="tab-pane fade" id="account-details">
+                        <h3>Chi tiết tài khoản </h3>
+                        <div class="login">
+                            <div class="login_form_container">
+                                <div class="account_login_form">
+                                    <form action="#">
+                                        
+                                        <div class="input-radio">
+                                            <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Nam</span>
+                                            <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Nữ</span>
+                                        </div> <br>
+                                        <div class="default-form-box mb-20">
+                                            <label>Họ và Tên</label>
+                                            <input type="text" name="first-name" value="{{ account.name }}">
+                                        </div>
+                                        <div class="default-form-box mb-20">
+                                            <label>Email</label>
+                                            <input type="text" name="email" value="{{ account.email }}">
+                                        </div>
+                                        <div class="default-form-box mb-20">
+                                            <label>Mật khẩu</label>
+                                            <input type="password" name="user-password" value="{{ account.password}}">
+                                        </div>
+                                        <div class="default-form-box mb-20">
+                                            <label>Số Điện Thoại</label>
+                                            <input type="number" name="user-number" value="{{ account.phone}}">
+                                        </div>
+                                        <!-- <div class="default-form-box mb-20">
+                                            <label>Ngày sinh</label>
+                                            <input type="date" name="birthday">
+                                        </div> -->
+
+            
+                                        <div class="save_button mt-3">
+                                            <button class="btn btn-md btn-black-default-hover" type="submit">Sửa</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- ...:::: End Account Dashboard Section:::... -->

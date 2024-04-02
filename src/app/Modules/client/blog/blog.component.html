@@ -77,7 +77,9 @@
                                         <div class="col-xl-5 col-md-6">
                                             <div class="image-box">
                                                 <a href="blog-single-sidebar-left.html" class="image-link">
-                                                    <img class="img-fluid" src="assets/images/banner/{{ news.image_url }}" alt="">
+                                                    <!-- <img class="img-fluid" src="assets/images/banner/{{ news.image_url }}" alt=""> -->
+                                                     <img [src]="getProductImageUrl(news.image_url)" alt="{{ news.image_url}}" />
+
                                                 </a>
                                             </div>
                                         </div>

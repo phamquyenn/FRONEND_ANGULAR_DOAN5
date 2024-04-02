@@ -35,7 +35,8 @@
                                     <td class="serial">{{ all.name }}</td>
                                     <td class="avatar">
                                         <div class="round-img">
-                                            <a href="#"><img class="rounded-circle" src="assets/images/product/default/home-3/{{ all.brand_image }}"  alt=""></a>
+                                            <img [src]="getProductImageUrl(all.brand_image)" alt="{{ all.brand_image}}" />
+                                            
                                         </div>
                                     </td>
                                     <td> {{ all.address }} </td>
@@ -49,7 +50,11 @@
                                         </span>
                                     </td>
                                     <td>
-                                       <span><button type="button" class="btn btn-danger">Xóa</button></span> 
+                                        <span>
+                                            <a href="javascript:void(0)">
+                                                <button type="button" class="btn btn-danger" (click)="onDelete(all.Brand_id)">Xóa</button>
+                                            </a>
+                                        </span> 
                                     </td>
                                 </tr>
                                 

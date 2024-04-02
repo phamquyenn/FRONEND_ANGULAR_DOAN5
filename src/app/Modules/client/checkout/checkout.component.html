@@ -25,252 +25,113 @@
     <div class="checkout-section">
         <div class="container">
             <div class="row">
-                <!-- User Quick Action Form -->
-                <div class="col-12">
-                    <div class="user-actions accordion" data-aos="fade-up"  data-aos-delay="0">
-                        <h3>
-                            <i class="fa fa-file-o" aria-hidden="true"></i>
-                            Phản hồi khách hàng?
-                            <a class="Returning" href="#" data-bs-toggle="collapse" data-bs-target="#checkout_login" aria-expanded="true">Nhấn để đăng nhập</a>
-                        </h3>
-                        <div id="checkout_login" class="collapse" data-parent="#checkout_login">
-                            <div class="checkout_info">
-                                <p>
-                                    Nếu bạn đã từng mua hàng với chúng tôi trước đây, vui lòng nhập thông tin chi tiết của bạn vào các ô bên dưới. Nếu bạn là khách hàng mới, vui lòng tiếp tục phần Thanh toán &amp; Phần vận chuyển.</p>
-                                <form action="#">
-                                    <div class="form_group default-form-box">
-                                        <label>Tên người dùng hoặc email <span>*</span></label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="form_group default-form-box">
-                                        <label>Mật Khẩu <span>*</span></label>
-                                        <input type="password">
-                                    </div>
-                                    <div class="form_group group_3 default-form-box">
-                                        <button class="btn btn-md btn-black-default-hover" type="submit">Đăng nhập</button>
-                                        <label class="checkbox-default">
-                                            <input type="checkbox">
-                                            <span>Ghi nhớ tôi</span>
-                                        </label>
-                                    </div>
-                                    <a href="#">Quên mật khẩu</a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="user-actions accordion" data-aos="fade-up"  data-aos-delay="200">
-                        <h3>
-                            <i class="fa fa-file-o" aria-hidden="true"></i>
-                            Phản hổi
-                            <a class="Returning" href="#" data-bs-toggle="collapse" data-bs-target="#checkout_coupon" aria-expanded="true">Click here to enter your code</a>
-
-                        </h3>
-                        <div id="checkout_coupon" class="collapse checkout_coupon" data-parent="#checkout_coupon">
-                            <div class="checkout_info">
-                                <form action="#">
-                                    <input placeholder="Coupon code" type="text">
-                                    <button class="btn btn-md btn-black-default-hover" type="submit">Áp dụng phiếu giảm giá</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- User Quick Action Form -->
+                
             </div>
             <!-- Start User Details Checkout Form -->
             <div class="checkout_form" data-aos="fade-up"  data-aos-delay="400">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <form action="#">
-                            <h3>Chi tiết thanh toán</h3>
+                            <h3>Chi tiết thông tin người dùng </h3>
                             <div class="row">
                                 <div class="col-lg-6">
+                                    <div class="default-form-box" >
+                                        <label >Tên<span>*</span></label>
+                                        <input type="text" id="name" [value]="account.name">
+                                    </div>
+                                </div>             
+                                <div class="col-6">
                                     <div class="default-form-box">
-                                        <label>Tên đầu tiên <span>*</span></label>
-                                        <input type="text">
+                                        <label for="country">Địa chỉ <span>*</span></label>
+                                        <input type="text" [value]="account.address">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="default-form-box">
-                                        <label>Họ<span>*</span></label>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="default-form-box">
-                                        <label>Tên công ty</label>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="default-form-box">
-                                        <label for="country">Thành phố <span>*</span></label>
-                                        <select class="country_option nice-select wide" name="country" id="country">
-                                            <option value="2">Hải Dương</option>
-                                            <option value="3">Hà Nội</option>
-                                            <option value="4">Tp.Hồ Chí Minh</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="default-form-box">
-                                        <label>Địa chỉ đường phố <span>*</span></label>
-                                        <input placeholder="House number and street name" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="default-form-box">
-                                        <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="default-form-box">
-                                        <label>Thị trấn/ thành phố <span>*</span></label>
-                                        <input type="text">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="default-form-box">
-                                        <label>Tình trạng / Quốc gia <span>*</span></label>
-                                        <input type="text">
-                                    </div>
-                                </div>
+                                
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label>Điện thoại<span>*</span></label>
-                                        <input type="text">
+                                        <input type="text" [value]="account.phone">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
-                                        <label> Địa chỉ email <span>*</span></label>
-                                        <input type="text">
+                                        <label> Email <span>*</span></label>
+                                        <input type="text" [value]="account.email">
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <label class="checkbox-default" for="newAccount" data-bs-toggle="collapse" data-bs-target="#newAccountPassword">
-                                        <input type="checkbox" id="newAccount">
-                                        <span>Tạo một tài khoản?</span>
-                                    </label>
-                                    <div id="newAccountPassword" class="collapse mt-3" data-parent="#newAccountPassword">
-                                        <div class="card-body1 default-form-box">
-                                            <label> Mật khẩu tài khoản <span>*</span></label>
-                                            <input placeholder="password" type="password">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <label class="checkbox-default" for="newShipping" data-bs-toggle="collapse" data-bs-target="#anotherShipping">
-                                        <input type="checkbox" id="newShipping">
-                                        <span>Gửi đến một địa chỉ khác?</span>
-                                    </label>
-
-                                    <div id="anotherShipping" class="collapse mt-3" data-parent="#anotherShipping">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="default-form-box">
-                                                    <label>Tên đầu <span>*</span></label>
-                                                    <input type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="default-form-box">
-                                                    <label>Tên sau <span>*</span></label>
-                                                    <input type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="default-form-box">
-                                                    <label>Tên công ty</label>
-                                                    <input type="text">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <div class="order-notes">
-                                        <label for="order_note">Ghi chú đặt hàng</label>
-                                        <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                </div>   
+                                <div class="col-lg-12">
+                                    <div class="default-form-box">
+                                        <label> Địa chỉ nhận hàng <span>*</span></label>
+                                        <input type="text" >
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <form action="#">
-                            <h3>Your order</h3>
+                        <form   (ngSubmit)="onSubmit()" >
+                            <h3>Đơn hàng của bạn</h3>
                             <div class="order_table table-responsive">
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Product</th>
-                                            <th>Total</th>
+                                            <th>Ảnh</th>
+                                            <th>sản phẩm</th>
+                                            <th>Tiền</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td> Handbag fringilla <strong> × 2</strong></td>
-                                            <td> $165.00</td>
+                                        <tr *ngFor=" let cart of carts">
+                                            <td>
+                                                <img [src]="getProductImageUrl(cart.img)" alt="{{ cart.img}}"  style="height: 50px;"/>
+                                           </td>
+                                            <td> ${{ cart.name }} <strong> x{{ cart.quantity }}</strong></td>
+                                            <td> ${{ cart.price }}</td>
                                         </tr>
-                                        <tr>
-                                            <td> Handbag justo <strong> × 2</strong></td>
-                                            <td> $50.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td> Handbag elit <strong> × 2</strong></td>
-                                            <td> $50.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td> Handbag Rutrum <strong> × 1</strong></td>
-                                            <td> $50.00</td>
-                                        </tr>
+                                        
                                     </tbody>
                                     <tfoot>
-                                        <tr>
-                                            <th>Cart Subtotal</th>
-                                            <td>$215.00</td>
+                                        <tr >
+                                            <th>Tiền</th>
+                                            <td >${{ totalPrice }}.00</td>
                                         </tr>
                                         <tr>
-                                            <th>Shipping</th>
-                                            <td><strong>$5.00</strong></td>
+                                            <th>Tiền ship</th>
+                                            <td><strong>${{ ship }}.00</strong></td>
                                         </tr>
                                         <tr class="order_total">
-                                            <th>Order Total</th>
-                                            <td><strong>$220.00</strong></td>
+                                            <th>Tổng tiền</th>
+                                            <td formControlName="amount"><strong>${{ totalOrder }}.00</strong></td>
                                         </tr>
+                                        
                                     </tfoot>
                                 </table>
+                                
                             </div>
                             <div class="payment_method">
+                            
                                 <div class="panel-default">
-                                    <label class="checkbox-default" for="currencyCod" data-bs-toggle="collapse" data-bs-target="#methodCod">
-                                        <input type="checkbox" id="currencyCod">
-                                        <span>Cash on Delivery</span>
-                                    </label>
-
-                                    <div id="methodCod" class="collapse" data-parent="#methodCod">
-                                        <div class="card-body1">
-                                            <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel-default">
-                                    <label class="checkbox-default" for="currencyPaypal" data-bs-toggle="collapse" data-bs-target="#methodPaypal">
+                                    <label class="checkbox-default" for="currencyPaypal" data-bs-toggle="collapse" data-bs-target="#methodPayment">
                                         <input type="checkbox" id="currencyPaypal">
-                                        <span>PayPal</span>
+                                        <span>Thanh Toán Online</span>
                                     </label>
-                                    <div id="methodPaypal" class="collapse " data-parent="#methodPaypal">
-                                        <div class="card-body1">
-                                            <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-                                        </div>
+                                    <div id="methodPayment" value="Chọn Phương thức thanh toán" class="collapse" data-parent="#methodPayment">
+                                        <select class="form-select" id="paymentMethod">
+                                            <option  formControlName="VNPAY" >Thanh toán VNPAY</option>
+                                            <option formControlName="MOMO">Thanh toán MOMO</option>
+                                            <option formControlName="COD">Thanh toán COD</option>
+                                        </select>
                                     </div>
+                                    
                                 </div>
                                 <div class="order_button pt-3">
-                                    <button class="btn btn-md btn-black-default-hover" type="submit">Proceed to PayPal</button>
+                                    <button class="btn btn-md btn-black-default-hover" type="submit" >Thanh Toán</button>
+                                    
                                 </div>
                             </div>
+                            
                         </form>
+                        
                     </div>
                 </div>
             </div> <!-- Start User Details Checkout Form -->
