@@ -52,5 +52,16 @@ export class UserService {
 
     return this.http.get(`${host}/login/client-info`, { headers });
   }
+
+  // 
+  getAccountInfo(){
+    let storage =sessionStorage.getItem('userInfo')
+    // console.log(storage)
+    if(storage){
+     return JSON.parse(storage);
+    }else{
+      return null;
+    }
+  }
   
 }

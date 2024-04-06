@@ -31,6 +31,7 @@
                                                         <a href="#" class="mega-menu-item-title">Sản phẩm  </a>
                                                         <ul class="mega-menu-sub">
                                                             <li><a routerLink="/client/shop">Tất cả sản phẩm</a></li>
+                                                            <li *ngIf="account"><a  routerLink="/client/shop">Sản phẩm yêu thích</a></li>
 
                                                         </ul>
                                                     </li>
@@ -40,8 +41,8 @@
                                                         <ul class="mega-menu-sub">
                                                             <li><a routerLink="/client/cart">Giỏ Hàng</a></li>
                                                             <li><a routerLink="/client/checkout">Thanh Toán</a></li>
-                                                            <li><a routerLink="/login">Đăng nhập </a></li>
-                                                            <li><a routerLink="#">Tài khoản</a></li>
+                                                            <li *ngIf="!account"><a routerLink="/login">Đăng nhập </a></li>
+                                                            <li *ngIf="account"><a routerLink="#">Tài khoản</a></li>
                                                         </ul>
                                                     </li>
                                                     <!-- Mega Menu Sub Link -->
@@ -105,9 +106,9 @@
                             <!-- Start Header Action Link -->
                             <ul class="header-action-link action-color--white action-hover-color--black">
                                 <li>
-                                    <a  href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                    <a  routerLink="client/favorites" class="offcanvas-toggle">
                                         <i class="icon-heart"></i>
-                                        <span class="item-count">1</span>
+                                        
                                     </a>
                                 </li>
                                 <li>

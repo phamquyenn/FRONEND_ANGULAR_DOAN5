@@ -8,12 +8,15 @@ import { ClientRoutingModule } from 'src/app/Modules/client/client-routing.modul
 import { LayoutAdminComponent } from './layout-admin/layout-admin.component';
 import { ClientModule } from 'src/app/Modules/client/client.module';
 import { PartialModule } from '../partial/partial.module';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({ 
     declarations:[
     LayoutClientComponent,
-    LayoutAdminComponent
+    LayoutAdminComponent,
+    LoginAdminComponent
   ],
     imports:[
   
@@ -22,7 +25,8 @@ import { PartialModule } from '../partial/partial.module';
         BrowserModule,
         ClientRoutingModule,
         ClientModule,
-       PartialModule
+       PartialModule,
+       ReactiveFormsModule
 
     ]
 }) 

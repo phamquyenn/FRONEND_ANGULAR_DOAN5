@@ -1,16 +1,14 @@
-import { Component,OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/admin/authentication.service';
 
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-admin',
+  templateUrl: './login-admin.component.html',
+  styleUrls: ['./login-admin.component.css']
 })
-export class LoginComponent {
-
+export class LoginAdminComponent {
   checkError: any;
 
   formLogin: FormGroup = new FormGroup({

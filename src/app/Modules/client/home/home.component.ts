@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductsService } from 'src/app/services/admin/products.service';
+import { FavoritesService } from 'src/app/services/client/favorites.service';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
+import { UserService } from 'src/app/services/client/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,12 +12,14 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent {
 
-  constructor(private product: HomeGetDataService, private image: ProductsService) { }
+  constructor(private Favo:FavoritesService ,private product: HomeGetDataService, private image: ProductsService, private user:UserService) { }
   products: any[] = [];
   brand: any[] = [];
   blog: any[] = [];
   bestsale : any[] = [];
   carts: any = this.product.getcarts();
+  islogin : boolean =false;
+
 
   productImage: string = '';
 
@@ -31,6 +35,7 @@ export class HomeComponent {
 
     this.product.getblog().subscribe(res => {
       this.blog = res;
+      console.log(this.blog)
     });
     this.product.getbestsale().subscribe(res =>{
       this.bestsale =res[0]
@@ -54,7 +59,18 @@ export class HomeComponent {
     return `http://localhost:3000/image/getproductimage/${filename}`;
     
   }
-  // 
+  // yêu thích
+  onFavorites(product_id: any){
+    let customer_id = this.user.getAccountInfo().customer_id;
+    this.Favo.addFavorites({customer_id:customer_id, product_id:product_id}).subscribe((res: any)=>{
+      Swal.fire({
+        title:res.result,
+        icon: 'success'
+      })
+    })
+  }
+
+  // thêm vào sản phẩm 
   onAddTocart(productdetails: any) {
     let idx = this.carts.findIndex((item: any) => item.id == productdetails.product_id);
 

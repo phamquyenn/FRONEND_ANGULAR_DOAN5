@@ -16,6 +16,7 @@ import { AccountComponent } from './account/account.component';
 import { ContactComponent } from './contact/contact.component';
 import { AuthGuardService } from 'src/app/services/admin/auth-gaurd.service';
 import { PaymentComponent } from './payment/payment.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,11 @@ const routes: Routes = [
     path:'payment',
     component:PaymentComponent,
     title:'payment'
+  },
+  {
+    path:'favorites',
+    component:FavoritesComponent,
+    title:'Product_favorites'
   },
 
 

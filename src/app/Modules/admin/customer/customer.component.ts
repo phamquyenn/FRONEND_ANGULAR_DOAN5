@@ -22,7 +22,6 @@ export class CustomerComponent implements OnInit{
   view(){
     this.cust.getall().subscribe((res: any)=>{
       this.customer = res;
-      console.log(this.customer)
     });
   }
   onDelete(id: number) {

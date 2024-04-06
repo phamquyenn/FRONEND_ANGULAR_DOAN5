@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutClientComponent } from './layout-client/layout-client.component';
 import { LayoutAdminComponent } from './layout-admin/layout-admin.component';
+import { SilerClientComponent } from '../partial/client/siler-client/siler-client.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +37,14 @@ const routes: Routes = [
           ),
       },
     ],
+  },
+  {
+    path:'slier',
+    component:SilerClientComponent
+  },
+  {
+    path:'login-admin',
+    component:LoginAdminComponent
   },
 
 ];

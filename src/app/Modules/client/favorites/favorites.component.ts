@@ -1,20 +1,17 @@
-import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/app/services/admin/products.service';
-import Swal from 'sweetalert2';
-
-
+import { FavoritesService } from 'src/app/services/client/favorites.service';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
 import { UserService } from 'src/app/services/client/user.service';
-import { FavoritesService } from 'src/app/services/client/favorites.service';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-products-list',
-  templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.css']
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.css']
 })
-export class ProductsListComponent implements OnInit {
+export class FavoritesComponent {
   id: any;
   productall: any[] = [];
   category: any[] = [];
@@ -23,22 +20,20 @@ export class ProductsListComponent implements OnInit {
   p: number=1;
   pageSize: number = 10;
   productImage : string= '';
+  Favorites: any[] =[];
 
-  constructor(private active: ActivatedRoute,private Favo:FavoritesService, private user:UserService,private dataService: HomeGetDataService,private image: ProductsService) { }
+  constructor(private active: ActivatedRoute,private dataService: HomeGetDataService, private favo: FavoritesService,private image: ProductsService, private user:UserService) { }
 
   ngOnInit(): void {
-    this.dataService.getproductall().subscribe(res=>{
-      
-      this.productall =res;
-      console.log(this.productall)
-    })
+    
+    this.view();
     this.dataService.getcategories().subscribe(res => {
       this.category = res;
     });
 
     this.dataService.getbrand().subscribe(res => {
       this.brands = res;
-      console.log(this.brands);
+      
     });
 
     this.id = this.active.paramMap.subscribe((query: any ) =>{
@@ -48,6 +43,12 @@ export class ProductsListComponent implements OnInit {
         this.productall = res;
         
       });
+    })
+  }
+  view(){
+    this.favo.getFavorites(this.user.getAccountInfo().customer_id).subscribe(res=>{
+    
+      this.Favorites =res;
     })
   }
   loadProductImage(filename: any) {
@@ -65,16 +66,44 @@ export class ProductsListComponent implements OnInit {
     return `http://localhost:3000/image/getproductimage/${filename}`;
     
   }
-  onFavorites(product_id: any){
-    let customer_id = this.user.getAccountInfo().customer_id;
-    this.Favo.addFavorites({customer_id:customer_id, product_id:product_id}).subscribe((res: any)=>{
-      Swal.fire({
-        title:res.result,
-        icon: 'success'
-      })
-    })
-  }
   // 
+  filterProductsByPrice(event: any) {
+    const selectedPrice = event.target.value;
+    if (selectedPrice === '10-50') {
+
+        this.favo.getFavorites(this.user.getAccountInfo().customer_id).subscribe((res: any[]) => {
+            this.productall = res.filter(product => product.price >= 10 && product.price <= 50);
+        });
+    } 
+    else if(selectedPrice === '60-100'){
+      this.favo.getFavorites(this.user.getAccountInfo().customer_id).subscribe((res: any[]) => {
+          this.productall = res.filter(product => product.price >= 60 && product.price <= 100);
+      });
+    } 
+  } 
+
+  // xóa sản phẩm yêu thích
+  onDelete(id: number) {
+    Swal.fire({
+      title: 'Bạn có chắc chắn muốn xóa khách hàng này?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Đồng ý',
+      cancelButtonText: 'Hủy',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User clicked "Đồng ý"
+        this.favo.delete(id).subscribe(res => {
+          this.view();
+        });
+      } else {
+        // User clicked "Hủy" or closed the dialog
+        console.log('Xóa khách hàng đã bị hủy bởi người dùng.');
+      }
+    });
+  }
+
+  // Thêm vào giỏ hàng
   onAddTocart(productdetails: any) {
     let idx = this.carts.findIndex((item: any) => item.id == productdetails.product_id);
 

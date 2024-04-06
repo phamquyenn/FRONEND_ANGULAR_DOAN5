@@ -18,7 +18,6 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { UpdateBrandComponent } from './update-brand/update-brand.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
-import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { CustomerComponent } from './customer/customer.component';
@@ -43,7 +42,6 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
     UpdateBrandComponent,
     UpdateBlogComponent,
     UpdateCategoryComponent,
-    LoginComponent,
     RegisterComponent,
     AddCustomerComponent,
     CustomerComponent,

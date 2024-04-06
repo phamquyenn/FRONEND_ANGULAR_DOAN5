@@ -7,7 +7,6 @@ const routes: Routes = [
 
   { path: '', redirectTo: '/client/Home', pathMatch: 'full' },
 
-
   
 
 

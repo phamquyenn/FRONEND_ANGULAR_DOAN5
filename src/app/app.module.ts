@@ -25,8 +25,7 @@ import { AuthGuardService } from './services/admin/auth-gaurd.service';
   declarations: [
     AppComponent,
 
-  
-   
+
   ],
   imports: [
     BrowserModule,

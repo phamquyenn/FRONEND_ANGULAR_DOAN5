@@ -14,7 +14,6 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { UpdateBrandComponent } from './update-brand/update-brand.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
-import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
@@ -29,14 +28,10 @@ const routes: Routes = [
     path:'register',
     component:RegisterComponent
   },
-  {
-    path:'login',
-    component:LoginComponent
-  },
+
   {
     path:'dashbroad',
     component:DashbroadComponent,
-    
   },
   {
     path:'product-admin',

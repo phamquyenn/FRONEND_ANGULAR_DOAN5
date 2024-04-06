@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/admin/products.service';
+import { FavoritesService } from 'src/app/services/client/favorites.service';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
+import { UserService } from 'src/app/services/client/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent {
-  constructor( private shop :HomeGetDataService,private product: HomeGetDataService, private image: ProductsService){ }
+  constructor( private shop :HomeGetDataService,private Favo:FavoritesService, private user:UserService,private product: HomeGetDataService, private image: ProductsService){ }
   productall: any[]=[];
   category: any[]=[];
   brands: any[]=[];
@@ -86,6 +88,16 @@ export class ShopComponent {
       showConfirmButton: false,
       timer: 1500 // Tắt thông báo sau 1.5 giây
     });
+  }
+  // 
+  onFavorites(product_id: any){
+    let customer_id = this.user.getAccountInfo().customer_id;
+    this.Favo.addFavorites({customer_id:customer_id, product_id:product_id}).subscribe((res: any)=>{
+      Swal.fire({
+        title:res.result,
+        icon: 'success'
+      })
+    })
   }
   // 
   filterProductsByPrice(event: any) {

@@ -19,7 +19,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AccountComponent } from './account/account.component';
 import { ContactComponent } from './contact/contact.component';
 import { PaymentComponent } from './payment/payment.component';
-import { OnlineCheckoutComponent } from './online-checkout/online-checkout.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 
@@ -38,7 +38,7 @@ import { OnlineCheckoutComponent } from './online-checkout/online-checkout.compo
     AccountComponent,
     ContactComponent,
     PaymentComponent,
-    OnlineCheckoutComponent
+    FavoritesComponent,
 
    
   ],

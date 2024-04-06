@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginComponent } from 'src/app/Modules/admin/login/login.component';
 
 
 @Component({
@@ -22,7 +21,7 @@ export class TopbaComponent implements OnInit {
   }
   onLogout() {
     sessionStorage.clear();
-    location.assign('/admin/login'); 
+    location.assign('/login-admin'); 
   }
 
   

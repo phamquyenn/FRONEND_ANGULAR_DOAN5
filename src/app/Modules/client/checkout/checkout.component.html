@@ -30,8 +30,8 @@
             <!-- Start User Details Checkout Form -->
             <div class="checkout_form" data-aos="fade-up"  data-aos-delay="400">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <form action="#">
+                    <div class="col-lg-12 col-md-12">
+                        <form  (ngSubmit)="onSubmit()" >
                             <h3>Chi tiết thông tin người dùng </h3>
                             <div class="row">
                                 <div class="col-lg-6">
@@ -56,20 +56,16 @@
                                 <div class="col-lg-6">
                                     <div class="default-form-box">
                                         <label> Email <span>*</span></label>
-                                        <input type="text" [value]="account.email">
+                                        <input type="text" [value]="account.email"> 
                                     </div>
                                 </div>   
                                 <div class="col-lg-12">
                                     <div class="default-form-box">
-                                        <label> Địa chỉ nhận hàng <span>*</span></label>
-                                        <input type="text" >
+                                        <label for="shippingAddress">Địa chỉ nhận hàng <span>*</span></label>
+                                        <input type="text" id="shippingAddress" name="shippingAddress" [(ngModel)]="shippingAddress">
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <form   (ngSubmit)="onSubmit()" >
                             <h3>Đơn hàng của bạn</h3>
                             <div class="order_table table-responsive">
                                 <table>
@@ -77,15 +73,17 @@
                                         <tr>
                                             <th>Ảnh</th>
                                             <th>sản phẩm</th>
+                                            <th>Số lượng</th>
                                             <th>Tiền</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr *ngFor=" let cart of carts">
                                             <td>
-                                                <img [src]="getProductImageUrl(cart.img)" alt="{{ cart.img}}"  style="height: 50px;"/>
+                                                <img [src]="getProductImageUrl(cart.img)" alt="{{ cart.name}}"  style="height: 50px;"/>
                                            </td>
-                                            <td> ${{ cart.name }} <strong> x{{ cart.quantity }}</strong></td>
+                                            <td> ${{ cart.name }} </td>
+                                            <td> {{ cart.quantity }}</td>
                                             <td> ${{ cart.price }}</td>
                                         </tr>
                                         
@@ -101,28 +99,25 @@
                                         </tr>
                                         <tr class="order_total">
                                             <th>Tổng tiền</th>
-                                            <td formControlName="amount"><strong>${{ totalOrder }}.00</strong></td>
+                                            <td ><strong>${{ totalOrder }}.00</strong></td>
                                         </tr>
-                                        
                                     </tfoot>
                                 </table>
                                 
                             </div>
                             <div class="payment_method">
-                            
                                 <div class="panel-default">
                                     <label class="checkbox-default" for="currencyPaypal" data-bs-toggle="collapse" data-bs-target="#methodPayment">
                                         <input type="checkbox" id="currencyPaypal">
                                         <span>Thanh Toán Online</span>
                                     </label>
                                     <div id="methodPayment" value="Chọn Phương thức thanh toán" class="collapse" data-parent="#methodPayment">
-                                        <select class="form-select" id="paymentMethod">
-                                            <option  formControlName="VNPAY" >Thanh toán VNPAY</option>
-                                            <option formControlName="MOMO">Thanh toán MOMO</option>
-                                            <option formControlName="COD">Thanh toán COD</option>
+                                        <select class="form-select" id="paymentMethod" [(ngModel)]="selectedPaymentMethod">
+                                            <option value="VNPAY">Thanh toán VNPAY</option>
+                                            <option value="MOMO">Thanh toán MOMO</option>
+                                            <option value="COD">Thanh toán COD</option>
                                         </select>
                                     </div>
-                                    
                                 </div>
                                 <div class="order_button pt-3">
                                     <button class="btn btn-md btn-black-default-hover" type="submit" >Thanh Toán</button>

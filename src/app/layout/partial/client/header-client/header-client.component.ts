@@ -14,7 +14,7 @@ export class HeaderClientComponent implements OnInit {
 
   ngOnInit(): void {
     let storage =sessionStorage.getItem('userInfo')
-    // console.log(storage)
+
     if(storage){
       this.account = JSON.parse(storage);
     }

@@ -17,34 +17,34 @@ export class CheckoutComponent implements OnInit{
   carts: any = [];
   cartImage: string='';
   ship = 5;
-  account:any;
-  // paymentMethod: string ='';
+  account: any = {}; 
+  paymentMethod: any = ''; 
+  selectedPaymentMethod: string = 'VNPAY';
+  shippingAddress: any='';
+
 
   profileForm: FormGroup = new FormGroup({
     amount: new FormControl(''),
-    NVPAY: new FormControl(''),
-    MOMO: new FormControl(''),
-    COD: new FormControl(''),
   });
 
   
   constructor( private app: HomeGetDataService,
                 private image:ProductsService, 
-                private router:Router){}
+                private router:Router, 
+                private vnpay:VnpayService
+              ){}
   ngOnInit(): void {
     this.ship = 5;
     // cart
     this.carts = this.app.getcarts();
+
     // user
     let storage =sessionStorage.getItem('userInfo')
     if(storage){
       this.account = JSON.parse(storage);
       
     }
-
-    
   }
-  
   
   //Tổng số lượng
   get totalQuantity(): number {
@@ -77,26 +77,29 @@ export class CheckoutComponent implements OnInit{
     return `http://localhost:3000/image/getproductimage/${filename}`;
     
   }
-  // user 
-  savePaycheck(): void {
-    const paycheck = {
-      carts: this.carts,
-      ship: this.ship,
-      account: this.account
-    };
-    // Chuyển đổi đối tượng thành chuỗi JSON
-    const paycheckJSON = JSON.stringify(paycheck);
-    // Lưu chuỗi JSON vào sessionStorage
-    sessionStorage.setItem('paycheck', paycheckJSON);
-  }
-
+  
   onSubmit( ) {
-    if (this.profileForm.invalid) {
-      
-      return;
-    }
-    
-    
+    const paymentData = {
+      amount: this.totalOrder,
+      customer_name: this.account.name,
+      customer_address: this.account.address,
+      customer_phone: this.account.phone,
+      customer_email: this.account.email,
+      shippingAddress: this.shippingAddress,
+      products: this.carts,
+      language: 'vn',
+      payment_method: this.selectedPaymentMethod 
+    };
+    this.vnpay.createPaymentUrl(paymentData).subscribe(
+      data => {
+        
+        window.location.href = data.vnpUrl;
+      },
+      error => {
+        console.error('Lỗi khi gọi API:', error);
+       
+      }
+    );
   }
 }
 
