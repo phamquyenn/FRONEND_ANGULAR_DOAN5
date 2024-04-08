@@ -5,7 +5,6 @@ import { ProductsService } from 'src/app/services/admin/products.service';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
 import { UserService } from 'src/app/services/client/user.service';
 import { VnpayService } from 'src/app/services/client/vnpay.service';
-import Swal from 'sweetalert2';
 
 
 @Component({

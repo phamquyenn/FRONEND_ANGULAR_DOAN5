@@ -30,7 +30,7 @@
                                                     <li class="mega-menu-item">
                                                         <a href="#" class="mega-menu-item-title">Sản phẩm  </a>
                                                         <ul class="mega-menu-sub">
-                                                            <li><a routerLink="/client/shop">Tất cả sản phẩm</a></li>
+                                                            <li *ngIf="account"><a routerLink="/client/shop">Tất cả sản phẩm</a></li>
                                                             <li *ngIf="account"><a  routerLink="/client/shop">Sản phẩm yêu thích</a></li>
 
                                                         </ul>
@@ -118,10 +118,30 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#search">
+                                    <a data-bs-toggle="modal" data-bs-target="#search">
                                         <i class="icon-magnifier"></i>
                                     </a>
+                                    <div class="modal fade" id="search" tabindex="-1" aria-labelledby="searchLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <input type="search" class="form-control" placeholder="Tìm kiếm nước hoa " />
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-md btn-black-default-hover">Tìm Kiếm</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
+                                
+                                  
+                               
                                 <!-- <li>
                                     <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">
                                         <i class="icon-menu"></i>
@@ -137,6 +157,7 @@
         </div>
     </header>
     <!-- Start Header Area -->
+   
 
     <!-- Start Offcanvas Mobile Menu Section -->
     <div id="offcanvas-about" class="offcanvas offcanvas-rightside offcanvas-mobile-about-section ">
@@ -249,83 +270,7 @@
     </div> <!-- End  Offcanvas Addcart Section -->
 
     <!-- Start Offcanvas Mobile Menu Section -->
-    <div id="offcanvas-wishlish" class="offcanvas offcanvas-rightside offcanvas-add-cart-section">
-        <!-- Start Offcanvas Header -->
-        <div class="offcanvas-header text-right">
-            <button class="offcanvas-close"><i class="ion-android-close"></i></button>
-        </div> <!-- ENd Offcanvas Header -->
+    
 
-        <!-- Start Offcanvas Mobile Menu Wrapper -->
-        <div class="offcanvas-wishlist-wrapper">
-            <h4 class="offcanvas-title">Wishlist</h4>
-            <ul class="offcanvas-wishlist">
-                <li class="offcanvas-wishlist-item-single">
-                    <div class="offcanvas-wishlist-item-block">
-                        <a href="#" class="offcanvas-wishlist-item-image-link">
-                            <img src="assets/images/product/default/home-3/default-1.jpg" alt="" class="offcanvas-wishlist-image">
-                        </a>
-                        <div class="offcanvas-wishlist-item-content">
-                            <a href="#" class="offcanvas-wishlist-item-link">Car Wheel</a>
-                            <div class="offcanvas-wishlist-item-details">
-                                <span class="offcanvas-wishlist-item-details-quantity">1 x </span>
-                                <span class="offcanvas-wishlist-item-details-price">$49.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offcanvas-wishlist-item-delete text-right">
-                        <a href="#" class="offcanvas-wishlist-item-delete"><i class="fa fa-trash-o"></i></a>
-                    </div>
-                </li>
-                <li class="offcanvas-wishlist-item-single">
-                    <div class="offcanvas-wishlist-item-block">
-                        <a href="#" class="offcanvas-wishlist-item-image-link">
-                            <img src="assets/images/product/default/home-2/default-1.jpg" alt="" class="offcanvas-wishlist-image">
-                        </a>
-                        <div class="offcanvas-wishlist-item-content">
-                            <a href="#" class="offcanvas-wishlist-item-link">Car Vails</a>
-                            <div class="offcanvas-wishlist-item-details">
-                                <span class="offcanvas-wishlist-item-details-quantity">3 x </span>
-                                <span class="offcanvas-wishlist-item-details-price">$500.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offcanvas-wishlist-item-delete text-right">
-                        <a href="#" class="offcanvas-wishlist-item-delete"><i class="fa fa-trash-o"></i></a>
-                    </div>
-                </li>
-                <li class="offcanvas-wishlist-item-single">
-                    <div class="offcanvas-wishlist-item-block">
-                        <a href="#" class="offcanvas-wishlist-item-image-link">
-                            <img src="assets/images/product/default/home-3/default-1.jpg" alt="" class="offcanvas-wishlist-image">
-                        </a>
-                        <div class="offcanvas-wishlist-item-content">
-                            <a href="#" class="offcanvas-wishlist-item-link">Shock Absorber</a>
-                            <div class="offcanvas-wishlist-item-details">
-                                <span class="offcanvas-wishlist-item-details-quantity">1 x </span>
-                                <span class="offcanvas-wishlist-item-details-price">$350.00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offcanvas-wishlist-item-delete text-right">
-                        <a href="#" class="offcanvas-wishlist-item-delete"><i class="fa fa-trash-o"></i></a>
-                    </div>
-                </li>
-            </ul>
-            <ul class="offcanvas-wishlist-action-button">
-                <li><a href="#" class="btn btn-block btn-pink">View wishlist</a></li>
-            </ul>
-        </div> <!-- End Offcanvas Mobile Menu Wrapper -->
-
-    </div> <!-- End Offcanvas Mobile Menu Section -->
-
-    <!-- Start Offcanvas Search Bar Section -->
-    <div id="search" class="search-modal ">
-        <button type="button" class="close">×</button>
-        <form>
-            <input type="search" placeholder="type keyword(s) here" />
-            <button type="submit" class="btn btn-lg btn-pink">Tìm kiếm</button>
-        </form>
-    </div>
-    <!-- End Offcanvas Search Bar Section -->
         <!-- Offcanvas Overlay -->
     <div class="offcanvas-overlay"></div>

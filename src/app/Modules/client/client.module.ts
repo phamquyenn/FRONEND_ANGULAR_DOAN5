@@ -20,6 +20,7 @@ import { AccountComponent } from './account/account.component';
 import { ContactComponent } from './contact/contact.component';
 import { PaymentComponent } from './payment/payment.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -47,7 +48,9 @@ import { FavoritesComponent } from './favorites/favorites.component';
         CommonModule, 
         ReactiveFormsModule,
         NgxPaginationModule,
-        FormsModule
+        FormsModule,
+    CarouselModule
+
 
     ],
 

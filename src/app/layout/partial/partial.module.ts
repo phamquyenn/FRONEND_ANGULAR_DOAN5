@@ -23,6 +23,7 @@ import { TopbaComponent } from './admin/topba/topba.component';
         CommonModule,
         RouterModule,
         BrowserModule
+        
     ],
     exports:[
         HeaderClientComponent,

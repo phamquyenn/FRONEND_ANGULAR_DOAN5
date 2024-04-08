@@ -47,6 +47,7 @@ const routes: Routes = [
     component:LoginAdminComponent
   },
 
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

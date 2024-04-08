@@ -14,7 +14,7 @@ import { TemplateModule } from './layout/template/template.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthGuardService } from './services/admin/auth-gaurd.service';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -34,8 +34,8 @@ import { AuthGuardService } from './services/admin/auth-gaurd.service';
     AdminModule,
     TemplateRoutingModule,
     MatDialogModule,
-    HttpClientModule
- 
+    HttpClientModule,
+    CarouselModule,
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]

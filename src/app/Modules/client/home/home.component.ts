@@ -4,6 +4,7 @@ import { FavoritesService } from 'src/app/services/client/favorites.service';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
 import { UserService } from 'src/app/services/client/user.service';
 import Swal from 'sweetalert2';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent {
 
+  
+
   constructor(private Favo:FavoritesService ,private product: HomeGetDataService, private image: ProductsService, private user:UserService) { }
   products: any[] = [];
   brand: any[] = [];
@@ -19,13 +22,29 @@ export class HomeComponent {
   bestsale : any[] = [];
   carts: any = this.product.getcarts();
   islogin : boolean =false;
+  
 
+  
+  customOptions: OwlOptions = {
+    loop: true,
+    items:4,
+    margin: 10,
+    autoplay: true,
+    center:true,
+    dots: false,
+    navSpeed: 700,
+  };
+  
+  
 
   productImage: string = '';
 
   ngOnInit() {
+    this.islogin = this.user.getAccountInfo() ? true :false;
+
     this.product.getnew().subscribe(res => {
       this.products = res[0];
+      console.log(this.products)
       
     });
 
@@ -35,11 +54,11 @@ export class HomeComponent {
 
     this.product.getblog().subscribe(res => {
       this.blog = res;
-      console.log(this.blog)
     });
     this.product.getbestsale().subscribe(res =>{
       this.bestsale =res[0]
-      
+      console.log(this.bestsale)
+
     })
   }
   // 
@@ -47,7 +66,6 @@ export class HomeComponent {
     this.image.getProductImage(filename).subscribe(
       (response: any) => {
         this.productImage = response.filename;
-        console.log(this.productImage)
       },
       (error) => {
         console.error('Lỗi khi lấy tên ảnh:', error);

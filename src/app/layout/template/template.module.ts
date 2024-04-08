@@ -10,6 +10,8 @@ import { ClientModule } from 'src/app/Modules/client/client.module';
 import { PartialModule } from '../partial/partial.module';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 @NgModule({ 
@@ -27,7 +29,6 @@ import { ReactiveFormsModule } from '@angular/forms';
         ClientModule,
        PartialModule,
        ReactiveFormsModule
-
     ]
 }) 
 export class TemplateModule{}
