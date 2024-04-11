@@ -25,20 +25,13 @@ export class ShopComponent {
 
   ngOnInit(){
     this.shop.getproductall().subscribe(res=>{
-      
       this.productall =res;
-      console.log(this.productall)
     })
     this.shop.getcategories().subscribe(res=>{
-      
       this.category =res;
-      
     })
     this.shop.getbrand().subscribe(res=>{
-      
       this.brands =res;
-      console.log(this.brands)
-      
     })
   }
   // 

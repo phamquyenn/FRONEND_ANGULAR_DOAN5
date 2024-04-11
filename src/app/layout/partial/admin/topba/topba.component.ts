@@ -13,7 +13,6 @@ export class TopbaComponent implements OnInit {
   ngOnInit(): void {
     
     let storage =sessionStorage.getItem('adminInfo')
-    console.log(storage)
     if(storage){
       this.admin = JSON.parse(storage);
       

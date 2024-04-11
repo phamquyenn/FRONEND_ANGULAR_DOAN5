@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BrandService } from 'src/app/services/admin/brand.service';
 import { ProductsService } from 'src/app/services/admin/products.service';
-import { HomeGetDataService } from 'src/app/services/client/product.service';
 import Swal from 'sweetalert2';
 
 @Component({

@@ -36,7 +36,6 @@ export class DashbroadComponent implements OnInit {
   
     this.order.getOrders(token).subscribe((res: any) => {
       this.orders = res;
-      console.log(this.orders);
     });
   }
   getProductImageUrl(filename: string): string {

@@ -30,7 +30,7 @@
                                                     <li class="mega-menu-item">
                                                         <a href="#" class="mega-menu-item-title">Sản phẩm  </a>
                                                         <ul class="mega-menu-sub">
-                                                            <li *ngIf="account"><a routerLink="/client/shop">Tất cả sản phẩm</a></li>
+                                                            <li ><a routerLink="/client/shop">Tất cả sản phẩm</a></li>
                                                             <li *ngIf="account"><a  routerLink="/client/shop">Sản phẩm yêu thích</a></li>
 
                                                         </ul>
@@ -47,9 +47,9 @@
                                                     </li>
                                                     <!-- Mega Menu Sub Link -->
                                                     <li class="mega-menu-item">
-                                                        <a href="#" class="mega-menu-item-title">Chi tiết </a>
-                                                        <ul class="mega-menu-sub">
-                                                            <li><a routerLink="/client/productDetail" >Sản Phẩm </a></li>
+                                                        <a href="#" class="mega-menu-item-title">Loại sản phẩm </a>
+                                                        <ul class="mega-menu-sub" *ngFor="let all of category">
+                                                            <li ><a routerLink="/client/categories/{{ all.category_id }}">{{ all.category_name }}</a></li>   
                                                         </ul>
                                                     </li>
                                                     <!-- Mega Menu Sub Link -->
@@ -62,15 +62,13 @@
                                                 </div>
                                             </div>
                                         </li>
+                                       
                                         
                                         <li class="has-dropdown">
-                                            <a href="#">Giới thiệu  <i class="fa fa-angle-down"></i></a>
-                                            <!-- Sub Menu -->
-                                            <ul class="sub-menu">
-                                                <!-- <li><a href="blog-full-width.html">Khám phá</a></li> -->
-                                                <li><a routerLink="/client/blog">Tin Tức</a></li>
-
-                                            </ul>
+                                            <a routerLink="/client/blog">Tin Tức </a>
+                                        </li>
+                                        <li class="has-dropdown">
+                                            <a routerLink="/client/aboutus">Giới thiệu </a>
                                         </li>
                                         <li class="has-megaitem">
                                             <a class="active main-menu-link" routerLink="/client/contact">Contact</a>
@@ -79,9 +77,9 @@
                                             <a routerLink="/client/page-not-found">420 - PERFUME</a>
                                         </li>
                                         <li class="has-dropdown">
-                                            <a href="#" *ngIf="account">{{ account.name }}  <i class="fa fa-angle-down"></i></a>
+                                            <a href="#" *ngIf="account">Tài Khoản <i class="fa fa-angle-down"></i></a>
                                             <a href="#" *ngIf="!account">Login<i class="fa fa-angle-down"></i></a>
-                                            <!-- Sub Menu -->
+                                          
                                             <ul class="sub-menu">
                                                 <li>
                                                     <a routerLink="/client/login" *ngIf="!account">Đăng Nhập</a>
@@ -91,13 +89,14 @@
                                                 </li>
                                                 
                                                 <li>
-                                                    <a routerLink="/client/account" *ngIf="account">Tài khoản</a>    
+                                                    <a routerLink="/client/account" *ngIf="account">Thông tin</a>    
                                                 </li>
                                                 <li>
                                                     <a routerLink="#" *ngIf="account" (click)="onLogout()">Đăng Xuất</a>
                                                 </li>
                                             </ul>
                                         </li>
+                                       
                                     </ul>
                                 </nav>
                             </div> 
@@ -129,18 +128,17 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form>
-                                                        <input type="search" class="form-control" placeholder="Tìm kiếm nước hoa " />
+                                                        <input #searchInput type="search" class="form-control" placeholder="Tìm kiếm nước hoa" (input)="onSearchInputChange()">
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-md btn-black-default-hover">Tìm Kiếm</button>
+                                                    <button type="button" class="btn btn-md btn-black-default-hover" (click)="search(searchInput.value)">Tìm Kiếm</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
                                 
-                                  
                                
                                 <!-- <li>
                                     <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">

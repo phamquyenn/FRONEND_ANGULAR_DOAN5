@@ -21,6 +21,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PaymentComponent } from './payment/payment.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 
@@ -40,6 +41,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ContactComponent,
     PaymentComponent,
     FavoritesComponent,
+    AboutUsComponent,
 
    
   ],

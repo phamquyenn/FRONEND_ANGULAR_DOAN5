@@ -13,8 +13,8 @@
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="#">Page</a></li>
+                                    <li><a routerLink="/client/Home">Home</a></li>
+                                    
                                     <li class="active" aria-current="page">404 Page</li>
                                 </ul>
                             </nav>
@@ -31,15 +31,16 @@
             <div class="row">
                 <div class="error-form">
                     <h1 class="big-title" data-aos="fade-up"  data-aos-delay="0">404</h1>
-                    <h4 class="sub-title" data-aos="fade-up"  data-aos-delay="200">Opps! PAGE NOT BE FOUND</h4>
-                    <p data-aos="fade-up"  data-aos-delay="400">Sorry but the page you are looking for does not exist, have been<br> removed, name changed or is temporarily unavailable.</p>
+                    <h4 class="sub-title" data-aos="fade-up"  data-aos-delay="200">Rất tiếc! KHÔNG TÌM THẤY TRANG</h4>
+                    <p data-aos="fade-up"  data-aos-delay="400">Xin lỗi nhưng trang bạn đang tìm kiếm không tồn tại, đã được
+                        đã bị <br> xóa, tên đã thay đổi hoặc tạm thời không có sẵn.</p>
                     <div class="row">
                         <div class="col-10 offset-1 col-md-4 offset-md-4">
                             <div class="default-search-style d-flex" data-aos="fade-up" data-aos-delay="600">
-                                <input class="default-search-style-input-box" type="search" placeholder="Search..." required>
+                                <input class="default-search-style-input-box" type="search" placeholder="Tìm kiếm..." required>
                                 <button class="default-search-style-input-btn" type="submit"><i class="fa fa-search"></i></button>
                             </div>
-                            <a href="index.html" class="btn btn-md btn-black-default-hover mt-7" data-aos="fade-up"  data-aos-delay="800">Back to home page</a>
+                            <a routerLink="/client/Home" class="btn btn-md btn-black-default-hover mt-7" data-aos="fade-up"  data-aos-delay="800">Quay lại trang chủ</a>
                         </div>
                     </div>
                 </div>

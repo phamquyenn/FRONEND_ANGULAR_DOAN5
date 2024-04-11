@@ -14,6 +14,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
+
 @NgModule({ 
     declarations:[
     LayoutClientComponent,
@@ -29,6 +30,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
         ClientModule,
        PartialModule,
        ReactiveFormsModule
+
     ]
 }) 
 export class TemplateModule{}

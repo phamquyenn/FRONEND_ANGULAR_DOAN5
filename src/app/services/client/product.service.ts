@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, Observer, Subject, catchError, map ,of } from "rxjs";
+import { Observable, Observer, Subject, catchError, forkJoin, map ,of } from "rxjs";
 
 const host = "http://localhost:3000"
 @Injectable({
@@ -10,6 +10,13 @@ const host = "http://localhost:3000"
 export class HomeGetDataService{
   
     constructor(private httpClient: HttpClient) {}
+
+    // 
+    getAllDataForSearch(): Observable<any[]> {
+        const productAll$ = this.getproductall(); 
+        const brands$ = this.getbrand(); 
+        return forkJoin([ productAll$, brands$]);
+      }
     // product
     getnew():Observable<any[]>{
         return this.httpClient.get<any[]>(`${host}/product/new`);

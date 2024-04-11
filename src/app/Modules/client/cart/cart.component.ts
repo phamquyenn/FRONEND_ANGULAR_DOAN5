@@ -75,7 +75,6 @@ export class CartComponent implements OnInit {
 
   // Kiểm tra thông tin giỏ hàng và chuyển hướng đến trang thanh toán
   checkout() {
-    console.log('Thông tin giỏ hàng:', this.carts);
     let storage = sessionStorage.getItem('userInfo');
     if (storage) {
       this.userInfo = JSON.parse(storage);

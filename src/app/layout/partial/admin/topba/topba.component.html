@@ -10,13 +10,7 @@
                     <a routerLink="/admin/dashbroad" *ngIf="admin"><i class="fa fa-bar-chart-o"></i> TỔNG QUAN </a>
                 </li>
                 <ng-container *ngIf="!admin">
-                    <li class="menu-title">QUẢN LÝ</li><!-- /.menu-title -->
-                    <!-- <li><a routerLink="#"><i class="menu-icon fa fa-table"></i> Sản Phẩm </a></li>
-                    <li><a href="#"><i class="menu-icon fa fa-table"></i> Loại Hàng </a></li>
-                    <li><a href="#"><i class="menu-icon fa fa-table"></i> Đơn Hàng </a></li>
-                    <li><a routerLink="#"><i class="menu-icon fa fa-table"></i> Thương Hiệu </a></li>
-                    <li><a routerLink="#"><i class="menu-icon fa fa-table"></i> Tin Tức </a></li>
-                    <li><a routerLink="#"><i class="menu-icon fa fa-table"></i> Ảnh </a></li> -->
+                    <li class="menu-title">QUẢN LÝ</li>
                 </ng-container>
                 <ng-container *ngIf="admin">
                     <li><a routerLink="/admin/product-admin"><i class="menu-icon fa fa-table"></i> Sản Phẩm </a></li>
@@ -25,6 +19,7 @@
                     <li><a routerLink="/admin/customer"><i class="menu-icon fa fa-table"></i> Khách Hàng </a></li>
                     <li><a routerLink="/admin/brand-admin"><i class="menu-icon fa fa-table"></i> Thương Hiệu </a></li>
                     <li><a routerLink="/admin/blog-admin"><i class="menu-icon fa fa-table"></i> Tin Tức </a></li>
+                    <li><a routerLink="/admin/About-us"><i class="menu-icon fa fa-table"></i> Giới thiệu </a></li>
                     <li><a routerLink="/admin/UploadImage"><i class="menu-icon fa fa-table"></i> Ảnh </a></li>
                 </ng-container>
                 

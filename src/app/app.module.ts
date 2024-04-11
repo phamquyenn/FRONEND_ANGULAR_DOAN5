@@ -3,10 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { ClientModule } from './Modules/client/client.module';
 import { TemplateRoutingModule } from './layout/template/template-routing.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashbroadComponent } from './Modules/admin/dashbroad/dashbroad.component';
 import { AdminModule } from './Modules/admin/admin.module';
 import { TopbaComponent } from './layout/partial/admin/topba/topba.component';
@@ -15,8 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthGuardService } from './services/admin/auth-gaurd.service';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
-
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -36,6 +38,11 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatDialogModule,
     HttpClientModule,
     CarouselModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    FormsModule,
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]

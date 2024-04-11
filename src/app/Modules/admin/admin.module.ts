@@ -22,6 +22,9 @@ import { RegisterComponent } from './register/register.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { CustomerComponent } from './customer/customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import { AddAboutusComponent } from './add-aboutus/add-aboutus.component';
+import { UpdateAboutusComponent } from './update-aboutus/update-aboutus.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 
 
@@ -45,7 +48,10 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
     RegisterComponent,
     AddCustomerComponent,
     CustomerComponent,
-    UpdateCustomerComponent
+    UpdateCustomerComponent,
+    AddAboutusComponent,
+    UpdateAboutusComponent,
+    AboutusComponent
   ],
   imports: [
     CommonModule,

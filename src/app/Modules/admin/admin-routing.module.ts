@@ -19,6 +19,9 @@ import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 import { AuthGuardService } from 'src/app/services/admin/auth-gaurd.service';
+import { AddAboutusComponent } from './add-aboutus/add-aboutus.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { UpdateAboutusComponent } from './update-aboutus/update-aboutus.component';
 
 
 
@@ -98,6 +101,18 @@ const routes: Routes = [
   {
     path:'add-customer',
     component:AddCustomerComponent
+  },
+  {
+    path:'add-aboutus',
+    component:AddAboutusComponent
+  },
+  {
+    path:'About-us',
+    component:AboutusComponent
+  },
+  {
+    path:'update-aboutus/:id',
+    component:UpdateAboutusComponent
   },
 ];
 

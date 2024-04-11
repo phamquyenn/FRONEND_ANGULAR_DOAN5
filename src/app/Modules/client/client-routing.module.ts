@@ -17,6 +17,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AuthGuardService } from 'src/app/services/admin/auth-gaurd.service';
 import { PaymentComponent } from './payment/payment.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -94,6 +95,11 @@ const routes: Routes = [
     path:'favorites',
     component:FavoritesComponent,
     title:'Product_favorites'
+  },
+  {
+    path:'aboutus',
+    component:AboutUsComponent,
+    title:'aboutus'
   },
 
 
