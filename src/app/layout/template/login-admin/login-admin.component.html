@@ -6,7 +6,7 @@
     <base href="/">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Đăng Nhập </title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -45,22 +45,13 @@
                             <input type="password" formControlName="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Mật Khẩu">
                         </div>
                         <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> nhớ mật khẩu
-                            </label>
-                            <label class="pull-right">
-                                <a href="#">Quên mật khẩu</a>
-                            </label>
+                            
+                           
                         </div>                        
                         <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30"[disabled]="formLogin.invalid">ĐĂNG NHẬP</button>
-                        <div class="social-login-content">
-                            <div class="social-button">
-                                <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Đăng nhập bằng facebook</button>
-                                <button type="button" class="btn social twitter btn-flat btn-addon mt-2"><i class="ti-twitter"></i>Đăng nhập bằng Email</button>
-                            </div>
-                        </div>
+                       
                         <div class="register-link m-t-15 text-center">
-                            <p>Bạn chưa có tài khoản?  <a routerLink="/admin/register" class="text-primary">Tạo tài khoản</a></p>
+                            <p>Bạn chưa có tài khoản?  <a routerLink="/register-admin" class="text-primary">Tạo tài khoản</a></p>
                         </div>
                     </form>
                 </div>

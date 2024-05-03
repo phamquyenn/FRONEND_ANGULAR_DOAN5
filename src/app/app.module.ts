@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CookieService } from 'ngx-cookie-service';
 
 import { ClientModule } from './Modules/client/client.module';
 import { TemplateRoutingModule } from './layout/template/template-routing.module';
@@ -44,7 +45,10 @@ import { FormsModule } from '@angular/forms';
     MatAutocompleteModule,
     FormsModule,
   ],
-  providers: [AuthGuardService],
+  providers: [
+    AuthGuardService,
+    CookieService 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

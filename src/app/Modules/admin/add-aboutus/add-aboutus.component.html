@@ -6,26 +6,27 @@
         
         <div class="card-body card-block">
             <form  class="form-horizontal" [formGroup]="profileFrom" (ngSubmit)="onSubmit()" >
-
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="name" class=" form-control-label">name </label></div>
-                    <div class="col-12 col-md-9"><input type="text" id="name" name="name" placeholder="Nhập tên name" class="form-control"  formControlName="name"></div>
-                </div>
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="description" class=" form-control-label">description</label></div>
-                    <div class="col-12 col-md-9"><textarea name="description" id="description" rows="5" placeholder="Nhập mới address" class="form-control"  formControlName="description"></textarea></div>
-                </div>
-                
-                
-                <div class="row form-group">
-                    <div class="col col-md-3"><label for="image" class="form-control-label">Image</label></div>
-                    <div class="col-12 col-md-9">
-                        <input type="file" id="image" name="image" class="form-control-file" required (change)="onFileChange($event)" enctype="multipart/form-data" >
-                        <img [src]="preview" class="w-50" alt="">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="name" class=" form-control-label">name </label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="name" name="name" placeholder="Nhập tên name" class="form-control"  formControlName="name"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="description" class=" form-control-label">description</label></div>
+                            <div class="col-12 col-md-9"><textarea name="description" id="description" rows="9" placeholder="Nhập mới description" class="form-control"  formControlName="description"></textarea></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="image" class="form-control-label">Image</label></div>
+                            <div class="col-12 col-md-9">
+                                <input type="file" id="image" name="image" class="form-control-file" required (change)="onFileChange($event)" enctype="multipart/form-data" >
+                                <img [src]="preview" class="w-50" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-            
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-sm">
                         <input type="submit" class="btn btn-success" value="Submit">

@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HomeGetDataService } from 'src/app/services/client/product.service';
 import { UserService } from 'src/app/services/client/user.service';
 
 

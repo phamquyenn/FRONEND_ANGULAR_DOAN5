@@ -13,22 +13,20 @@ export class BlogComponent {
   category : any[]=[];
   brands: any[]=[];
   blogImage: string ='';
+  p: number=1;
+  pageSize: number = 10;
+
+
   ngOnInit(){
     this.blog.getblog().subscribe(res=>{
-      
       this.blogs =res;
-      
+      console.log( this.blogs)
     }),
     this.blog.getcategories().subscribe(res=>{
-      
       this.category =res;
-      
     })
     this.blog.getbrand().subscribe(res=>{
-      
       this.brands =res;
-      console.log(this.brands)
-      
     })
   }
   loadProductImage(filename: any) {

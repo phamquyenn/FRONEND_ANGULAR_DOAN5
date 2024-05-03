@@ -18,14 +18,14 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { UpdateBrandComponent } from './update-brand/update-brand.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
-import { RegisterComponent } from './register/register.component';
+// import { RegisterComponent } from './register/register.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { CustomerComponent } from './customer/customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 import { AddAboutusComponent } from './add-aboutus/add-aboutus.component';
 import { UpdateAboutusComponent } from './update-aboutus/update-aboutus.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
-
+import { OrderComponent } from './order/order.component';
 
 
 
@@ -45,19 +45,20 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     UpdateBrandComponent,
     UpdateBlogComponent,
     UpdateCategoryComponent,
-    RegisterComponent,
+    // RegisterComponent,
     AddCustomerComponent,
     CustomerComponent,
     UpdateCustomerComponent,
     AddAboutusComponent,
     UpdateAboutusComponent,
-    AboutusComponent
+    AboutusComponent,
+    OrderComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
 
   ],
 

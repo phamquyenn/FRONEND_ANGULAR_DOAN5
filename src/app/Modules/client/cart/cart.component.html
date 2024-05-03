@@ -46,15 +46,15 @@
                                         <!-- Start Cart Single Item-->
                                         <tr *ngFor=" let cart of carts, let i=index">
                                             <td class="product_thumb">
-                                                <a href="product-details-default.html">
+                                                <a href="#">
                                                     <!-- <img src="assets/images/product/default/home-3/{{ cart.img }}" alt=""> -->
                                                     <img [src]="getProductImageUrl(cart.img)" alt="{{ cart.img}}" />
                                                 </a>
                                             </td>
                                             <td class="product_name"><a href="product-details-default.html">{{ cart.name }}</a></td>
-                                            <td class="product-price">${{ cart.price }}.00</td>
+                                            <td class="product-price">{{ cart.price | number:'1.0-0' }} vnd</td>
                                             <td class="product_quantity"> <input min="1" max="100" [value]="cart.quantity" type="number" (change)="updateQuantity(i, $event)" ></td>
-                                            <td class="product_total">${{ subtotal(cart)| number:'1.0-0' }}.00</td>
+                                            <td class="product_total">{{ subtotal(cart)| number:'1.0-0' }} vnd</td>
                                             <td class="product_remove">
                                                 <button (click)="removecart(i)">
                                                    <i class="fa fa-trash-o"></i>
@@ -94,7 +94,7 @@
                             <div class="coupon_inner">
                                 <div class="cart_subtotal">
                                     <p>Tổng tiền</p>
-                                    <p class="cart_amount">${{ totalPrice }}.00</p>
+                                    <p class="cart_amount">{{ totalPrice | number:'1.0-0'}} vnd</p>
                                 </div>
                                 <div class="checkout_btn">
                                     <a class="btn btn-md btn-golden" (click)="checkout()">Đặt hàng</a>

@@ -24,7 +24,7 @@ export class BrandService {
   }
   // IMAGE
   getImageUrl(filename: any): Observable<any> {
-    const imageUrl = `${host}brand/getproductimage/${filename}`;
+    const imageUrl = `${host}brand/getimage/${filename}`;
     return this.httpClient.get<any[]>(imageUrl)
   }
   // update

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/admin/authentication.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-admin',
@@ -29,19 +30,21 @@ export class LoginAdminComponent {
     this.auth.checkLogin(this.formLogin.value).subscribe(
       (res: any) => {
         const token = res.token;
-        console.log(res)
         if (token) {
           localStorage.setItem('token', token);
           this.auth.getUserInfo(token).subscribe(
             (adminInfo: any) => {
-              if (adminInfo) {
-                sessionStorage.setItem('adminInfo', JSON.stringify(adminInfo));
+              if (adminInfo && adminInfo.user && adminInfo.user.role === 'admin') {
+                sessionStorage.setItem('adminInfo', JSON.stringify(adminInfo.user));
                 this.router.navigate(['/admin/dashbroad']).then(() => {
                   window.location.reload();
                 });
-                
               } else {
-                console.error('Lỗi: Không có thông tin người dùng.');
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Lỗi',
+                  text: 'Không có thông tin người dùng hoặc không phải là quản trị viên.',
+                });
               }
             },
             (error) => {

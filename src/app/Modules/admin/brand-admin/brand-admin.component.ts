@@ -27,12 +27,13 @@ export class BrandAdminComponent implements OnInit {
     this.brand.getbrand().subscribe((res: any)=>{
       
       this.brands = res;
+      console.log(this.brands)
 
     });
   }
   // 
   loadProductImage(filename: any) {
-    this.image.getProductImage(filename).subscribe(
+    this.brand.getImageUrl(filename).subscribe(
       (response: any) => {
         this.beandImage = response.filename;
         console.log(this.beandImage)
@@ -44,7 +45,7 @@ export class BrandAdminComponent implements OnInit {
   }
 
   getProductImageUrl(filename: string): string {
-    return `http://localhost:3000/image/getproductimage/${filename}`;
+    return `http://localhost:3000/brand/getimage/${filename}`;
     
   }
   // 

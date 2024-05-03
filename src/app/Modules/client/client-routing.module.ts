@@ -18,73 +18,75 @@ import { AuthGuardService } from 'src/app/services/admin/auth-gaurd.service';
 import { PaymentComponent } from './payment/payment.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { SuccessComponent } from './success/success.component';
+import { OrderedComponent } from './ordered/ordered.component';
 
 const routes: Routes = [
   {
     path:'Home',
     component:HomeComponent,
-    title:'client-Home'
+    title:'Trang Chủ'
   },
   {
     path:'shop',
     component:ShopComponent,
-    title:'client-Shop'
+    title:'Cửa hàng'
   },
   {
     path:'blog',
     component:BlogComponent,
-    title:'client-Blog'
+    title:'Tin tức'
   },
   {
     path:'checkout',
     component:CheckoutComponent,
-    title:'client-Checkout'
+    title:'Thanh Toán'
   },
   {
     path:'cart',
     component:CartComponent,
-    title:'client-Cart'
+    title:'Giỏ Hàng'
   },
   {
     path:'page-not-found',
     component:PageNotFoundComponent,
-    title:'client-Page-not-found'
+    title:'Không tìm thấy'
   },
   {
     path:'categories/:id',
     component:ProductsListComponent,
-    title:'GetProductsByCategories'
+    title:'sản phẩm'
   },
   {
     path:'productDetail/:id',
     component:ProductDetailComponent,
-    title:'client-Detail'
+    title:'Chi tiết'
   },
   {
     path:'productDetail',
     component:ProductDetailComponent,
-    title:'client-Detail'
+    title:'Chi tiết sản phẩm'
   },
   {
     path:'login',
     component:LoginComponent,
-    title:'client-login'
+    title:'Đăng nhập'
   },
   {
     path:'register',
     component:RegisterComponent,
-    title:'client-register'
+    title:'Đăng ký'
   },
   {
     path:'account',
     component:AccountComponent,
-    title:'Account'
+    title:'Tài khoản'
   },
   
   {
     path:'contact',
     component:ContactComponent,
-    title:'Contact'
+    title:'liên hệ'
   },
   {
     path:'payment',
@@ -94,12 +96,22 @@ const routes: Routes = [
   {
     path:'favorites',
     component:FavoritesComponent,
-    title:'Product_favorites'
+    title:'Sản phẩm yêu thihcs'
   },
   {
     path:'aboutus',
     component:AboutUsComponent,
-    title:'aboutus'
+    title:'Giới thiệu'
+  },
+  {
+    path:'success',
+    component:SuccessComponent,
+    title:'Đã mua .'
+  },
+  {
+    path:'order',
+    component:OrderedComponent,
+    title:'Đơn hàng.'
   },
 
 

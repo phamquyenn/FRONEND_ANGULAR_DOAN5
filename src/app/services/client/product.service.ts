@@ -10,7 +10,10 @@ const host = "http://localhost:3000"
 export class HomeGetDataService{
   
     constructor(private httpClient: HttpClient) {}
-
+    // Search 
+    searchProducts(term: string): Observable<any> {
+        return this.httpClient.get<any>(`${host}/product/search?term=${term}`);
+      }
     // 
     getAllDataForSearch(): Observable<any[]> {
         const productAll$ = this.getproductall(); 
@@ -67,6 +70,10 @@ export class HomeGetDataService{
     GetProductByBrand(id:number){
         return this.httpClient.get<any[]>(`${host}/product/getproductsbybrand/${id}`)
     }
+    getbrandImageUrl(filename: any): Observable<any> {
+        const imageUrl = `${host}brand/getimage/${filename}`;
+        return this.httpClient.get<any[]>(imageUrl)
+      }
     // getproduct by id
     getProductById(id:number){
         return this.httpClient.get<any[]>(`${host}/product/getonce/${id}`)
@@ -122,7 +129,9 @@ export class HomeGetDataService{
     }
     // Tính số lượng trong cart
     getCartItemCount(): number {
-        return this.getCartToTalQuantity();
+        let carts = this.getcarts();
+        let total = carts.length; 
+        return total;
       }
     // 
     updateCartAndItemCount(carts: any[]) {

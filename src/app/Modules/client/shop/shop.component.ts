@@ -19,21 +19,44 @@ export class ShopComponent {
   p: number=1;
   pageSize: number = 10;
   productImage : string= '';
-
+  searchTerm: any;
+  searchResults: any[]=[];
+  isSearchPerformed: boolean = false;
 
 
 
   ngOnInit(){
-    this.shop.getproductall().subscribe(res=>{
-      this.productall =res;
-    })
+    this.allproduct();
     this.shop.getcategories().subscribe(res=>{
       this.category =res;
     })
     this.shop.getbrand().subscribe(res=>{
       this.brands =res;
     })
+    this.search()
   }
+  allproduct(){
+    this.shop.getproductall().subscribe(res=>{
+      this.productall =res;
+      
+    });
+  }
+  search(): void {
+    if (this.searchTerm && this.searchTerm.trim() !== '') {
+      this.searchResults = this.productall.filter(product => {
+        return product.product_name.toLowerCase().includes(this.searchTerm.toLowerCase());
+      });
+    } else {
+      if (this.isSearchPerformed) {
+        this.searchResults = this.productall; 
+      }
+    }
+  }
+  performSearch(): void {
+    this.isSearchPerformed = true;
+    this.search();
+  }
+  
   // 
   loadProductImage(filename: any) {
     this.image.getProductImage(filename).subscribe(
@@ -107,5 +130,10 @@ export class ShopComponent {
       });
     } 
   } 
+  // Search 
+
+  
+  
+  
 
 }

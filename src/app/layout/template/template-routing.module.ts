@@ -5,6 +5,7 @@ import { LayoutClientComponent } from './layout-client/layout-client.component';
 import { LayoutAdminComponent } from './layout-admin/layout-admin.component';
 import { SilerClientComponent } from '../partial/client/siler-client/siler-client.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { RegisterAdminComponent } from './register-admin/register-admin.component';
 const routes: Routes = [
   {
     path: '',
@@ -44,7 +45,13 @@ const routes: Routes = [
   },
   {
     path:'login-admin',
-    component:LoginAdminComponent
+    component:LoginAdminComponent,
+    title:'Đăng Nhập'
+  },
+  {
+    path:'register-admin',
+    component:RegisterAdminComponent,
+    title:'Đăng ký'
   },
 
 

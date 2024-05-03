@@ -14,7 +14,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text">vnd<span class="count">200000</span></div>
+                                    <div class="stat-text">{{ TotalOrder | number:'1.0-0' }}</div>
                                     <div class="stat-heading">Doanh Thu</div>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">20000</span></div>
+                                    <div class="stat-text">{{ CountOrder | number:'1.0-0' }}</div>
                                     <div class="stat-heading">Đơn Hàng</div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                             <div class="stat-content">
                                 <div class="text-left dib">
                                     <div class="stat-text"><span class="count">349</span></div>
-                                    <div class="stat-heading">Mẫu</div>
+                                    <div class="stat-heading">Kho</div>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">2986</span></div>
+                                    <div class="stat-text">{{ totalCus }}</div>
                                     <div class="stat-heading">Khách Hàng</div>
                                 </div>
                             </div>
@@ -79,78 +79,31 @@
         </div>
         <!-- /Widgets -->
         <!--  Traffic  -->  
-       
+        <!-- <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart> -->
         <!--  /Traffic -->
         <div class="clearfix"></div>
         <!-- Orders -->
-        <div class="orders" *ngIf="admin">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card"  >
-                        <div class="card-body">
-                            <h4 class="box-title">Đơn Hàng </h4>
+        
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-3">Biểu Đồ  </h4>
+                                <div class="btn-group" role="group" aria-label="Xem Thống Kê">
+                                    <button type="button" class="btn btn-outline-secondary" (click)="getWeeklyStatistics()">Theo Tuần</button>
+                                    <button type="button" class="btn btn-outline-secondary" >Theo Tháng</button>
+                                    <button type="button" class="btn btn-outline-secondary" >Theo Năm</button>
+                                </div>
+                                <canvas id="singelBarChart"></canvas>
+                            </div>
                         </div>
-                        <div class="card-body--">
-                            <div class="table-stats order-table ov-h">
-                                <table class="table ">
-                                    <thead>
-                                        <tr>
-                                            <!-- <th class="serial">STT</th> -->
-                                            <th class="avatar">Hình Ảnh</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Giá sản phẩm </th>
-                                            <th>brand</th>
-                                            <th>Trạng thái đơn hàng</th>
-                                            <th>Ngày đặt</th>
-                                            <th>Số lượng</th>
-                                            <th>Tổng tiền </th>
-                                            <th>Kiểm tra </th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <tr class=" pb-0" *ngFor="let all of orders | paginate: { itemsPerPage: 5, currentPage: p }" >
-                                            
-                                            <td class="avatar pb-0">
-                                                <div class="round-img">
-                                                    <a href="#">
-                                                        <img [src]="getProductImageUrl(all.product_image)" alt="{{ all.product_image}}" />
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td> {{ all.product_name }} </td>
-                                            <td>  <span class="price">{{ all.product_price }}</span> </td>
-                                            <td> <span class="brand">{{ all.brand }}</span> </td>
-                                            <td> <span class="status ">{{ all.order_status }}</span> </td>
-                                            <td> <span class="order_date">{{ all.order_date }}</span> </td>
-                                            <td><span class="quanlity">{{ all.order_quantity }}</span></td>
-                                            <td><span class="quanlity">{{ all.total_price }}</span></td>
-
-                                            <td>
-                                                <span class="badge badge-complete">View</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="12">
-                                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div> <!-- /.table-stats -->
-                        </div>
-                    </div> <!-- /.card -->
-                </div>  <!-- /.col-lg-8 -->
-
-                
-            </div>
+                    </div><!-- /# column -->
+                </div>
+            </div><!-- .animated -->
         </div>
-        <div class="orders" *ngIf="!admin">
-            
-        </div>
+
         <!-- /.orders -->
        
 
@@ -160,3 +113,4 @@
     </div>
     <!-- .animated -->
 </div>
+

@@ -22,19 +22,36 @@
     <!-- Start About Top -->
     <div class="about-top">
         <div class="container">
-            <div class="row d-flex align-items-center justify-content-between d-sm-column" *ngFor="let all of about" >
+            <div class="row d-flex align-items-center justify-content-between d-sm-column"  >
                 <div class="col-md-6">
                     <div class="about-img" data-aos="fade-up"  data-aos-delay="0">
                         <div class="img-responsive">
-                            <img [src]="getImageUrl(all.image)" alt="{{ all.image}}" />
+                            <img [src]="getImageUrl(about[0].image)" alt="{{ about[0].image}}" />
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="content" data-aos="fade-up"  data-aos-delay="200">
-                        <h3 class="title">{{ all.name }}</h3>
+                        <h3 class="title">{{ about[0].name }}</h3>
                         <h5 class="semi-title"></h5>
-                        <p>{{ all.description }}</p>
+                        <p>{{ about[0].description }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex align-items-center justify-content-between d-sm-column"  >
+                
+                <div class="col-md-6">
+                    <div class="content" data-aos="fade-up"  data-aos-delay="200">
+                        <h3 class="title">{{ about[1].name }}</h3>
+                        <h5 class="semi-title"></h5>
+                        <p>{{ about[1].description }}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about-img" data-aos="fade-up"  data-aos-delay="0">
+                        <div class="img-responsive">
+                            <img [src]="getImageUrl(about[1].image)" alt="{{ about[1].image}}" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,26 +65,16 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="content" data-aos="fade-up"  data-aos-delay="0">
-                        <h4 class="title">Functionality meets perfection</h4>
-                        <p>In today’s day and age, one cannot underestimate the importance of design, the art of creating striking visuals to move and captivate your audience. And as the world becomes more and more digitized with each passing second, the importance of graphic design has been rocketed to the top.</p>
+                        <img [src]="getImageUrl(about[2].image)" alt="{{ about[2].image}}" />
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="custom-progress m-t-40">
-                        <div class="skill-progressbar" data-aos="fade-up"  data-aos-delay="0">
-                            <h6 class="font--semi-bold m-b-15">UI/UX</h6>
-                            <div class="line-progressbar" data-percentage="75" data-progress-color="#b19361"></div>
-                        </div>
-                        <div class="skill-progressbar" data-aos="fade-up"  data-aos-delay="200">
-                            <h6 class="font--semi-bold m-b-15">Ideas</h6>
-                            <div class="line-progressbar" data-percentage="86" data-progress-color="#b19361"></div>
-                        </div>
-                        <div class="skill-progressbar" data-aos="fade-up"  data-aos-delay="400">
-                            <h6 class="font--semi-bold m-b-15">Design</h6>
-                            <div class="line-progressbar" data-percentage="97" data-progress-color="#b19361"></div>
-                        </div>
+                    <div class="content" data-aos="fade-up"  data-aos-delay="0">
+                        <h4 class="title">{{ about[2].name }}</h4>
+                        <p>{{ about[2].description }}</p>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -85,8 +92,8 @@
                                 <img src="assets/images/icons/icon_about1.jpg" alt="">
                         </div>
                             <div class="content">
-                                <h6 class="title">Creative Always</h6>
-                                <p>Stay creative with Billey and the huge collection of premade elements, layouts & effects.</p>
+                                <h6 class="title">Luôn sáng tạo</h6>
+                                <p>Luôn sáng tạo với Billey và bộ sưu tập khổng lồ gồm các phần tử, bố cục và hiệu ứng được tạo sẵn.</p>
                             </div>
                         </div>
                     </div>
@@ -98,8 +105,8 @@
                                 <img src="assets/images/icons/icon_about2.jpg" alt="">
                         </div>
                             <div class="content">
-                                <h6 class="title">Express Customization</h6>
-                                <p>Easy to install and configure the theme customization in a few clicks with Billey.</p>
+                                <h6 class="title">Tùy chỉnh nhanh</h6>
+                                <p>Dễ dàng cài đặt và định cấu hình tùy chỉnh chủ đề chỉ trong vài cú nhấp chuột với Billey.</p>
                             </div>
                         </div>
                     </div>
@@ -111,8 +118,8 @@
                                 <img src="assets/images/icons/icon_about3.jpg" alt="">
                         </div>
                             <div class="content">
-                                <h6 class="title">Premium Integrations</h6>
-                                <p>Integrated premium plugins in Billey is the secret weapon for your business to thrive.</p>
+                                <h6 class="title">Tích hợp cao cấp</h6>
+                                <p>Các plugin cao cấp tích hợp trong Billey là vũ khí bí mật giúp doanh nghiệp của bạn phát triển mạnh mẽ.</p>
                             </div>
                         </div>
                     </div>
@@ -124,8 +131,9 @@
                                 <img src="assets/images/icons/icon_about4.jpg" alt="">
                         </div>
                             <div class="content">
-                                <h6 class="title">Real-time Editing</h6>
-                                <p>Edit your work and preview the changes on the screen live with advanced page builder.</p>
+                                <h6 class="title">
+                                    Chỉnh sửa thời gian thực</h6>
+                                <p>Chỉnh sửa tác phẩm của bạn và xem trước các thay đổi trực tiếp trên màn hình với trình tạo trang nâng cao.</p>
                             </div>
                         </div>
                     </div>
@@ -135,167 +143,35 @@
         </div>
     </div>
     <!-- End Service Section -->
-
-    <!--  Start  Team Section    -->
-    <div class="team-section section-top-gap-100 secton-fluid section-inner-bg">
-        <!-- Start Section Content Text Area -->
-        <div class="section-title-wrapper" data-aos="fade-up"  data-aos-delay="0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section-content-gap">
-                            <div class="secton-content text-center">
-                                <h3  class="section-title">Meet Our Team</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Section Content Text Area -->
-        <div class="team-wrapper">
-            <div class="container">
-                <div class="row mb-n6">
-                    <div class="col-xl-3 mb-5">
-                        <div class="team-single" data-aos="fade-up"  data-aos-delay="0">
-                            <div class="team-img">
-                                <img class="img-fluid" src="assets/images/team/leader1.png" alt="">
-                            </div>
-                            <div class="team-content">
-                                <h6 class="team-name font--bold mt-5">Ms. Veronica</h6>
-                                <span class="team-title">Web Designer</span>
-                                <ul class="team-social pos-absolute">
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-xl-3 mb-5">
-                        <div class="team-single" data-aos="fade-up"  data-aos-delay="200">
-                            <div class="team-img">
-                                <img class="img-fluid" src="assets/images/team/leader2.png" alt="">
-                            </div>
-                            <div class="team-content">
-                                <h6 class="team-name font--bold mt-5">Missa Santos</h6>
-                                <span class="team-title">CEO Founder</span>
-                                <ul class="team-social pos-absolute">
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-xl-3 mb-5">
-                        <div class="team-single" data-aos="fade-up"  data-aos-delay="400">
-                            <div class="team-img">
-                                <img class="img-fluid" src="assets/images/team/leader3.png" alt="">
-                            </div>
-                            <div class="team-content">
-                                <h6 class="team-name font--bold mt-5">Missa Santos</h6>
-                                <span class="team-title">Chief Officer</span>
-                                <ul class="team-social pos-absolute">
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-xl-3 mb-5">
-                        <div class="team-single" data-aos="fade-up"  data-aos-delay="600">
-                            <div class="team-img">
-                                <img class="img-fluid" src="assets/images/team/leader4.png" alt="">
-                            </div>
-                            <div class="team-content">
-                                <h6 class="team-name font--bold mt-5">Lisa Antonia</h6>
-                                <span class="team-title">CTO</span>
-                                <ul class="team-social pos-absolute">
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--   End  Team Section   -->
-
-    <!-- Start Company Logo Section -->
     <div class="company-logo-section section-top-gap-100 section-fluid">
         <div class="company-logo-wrapper" data-aos="fade-up"  data-aos-delay="0">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="company-logo-slider default-slider-nav-arrow">
-                            <!-- Slider main container -->
-                            <div class="swiper-container company-logo-slider">
-                                <!-- Additional required wrapper -->
-                                <div class="swiper-wrapper">
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image"><img  class="img-fluid" src="assets/images/company-logo/company-logo-1.png" alt=""></div>
+    
+                            
+                            <owl-carousel-o [options]="customOptions">
+    
+                                <ng-container *ngFor="let b of brands">
+                                <ng-template carouselSlide>
+                                    <div class="company-logo-single-item" role="group" aria-label="1 / 8" style="width: 167.143px;">
+                                    <div class="image">
+                                        <a routerLink=""> <img [src]="getImageUrlBrand(b.brand_image)" alt="{{ b.brand_image}}" /></a>
                                     </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image"><img class="img-fluid" src="assets/images/company-logo/company-logo-2.png" alt=""></div>
                                     </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image"><img class="img-fluid" src="assets/images/company-logo/company-logo-3.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image"><img class="img-fluid" src="assets/images/company-logo/company-logo-4.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image"><img class="img-fluid" src="assets/images/company-logo/company-logo-5.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image"><img class="img-fluid" src="assets/images/company-logo/company-logo-6.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image"><img class="img-fluid" src="assets/images/company-logo/company-logo-7.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                    <!-- Start Company Logo Single Item -->
-                                    <div class="company-logo-single-item swiper-slide">
-                                        <div class="image"><img class="img-fluid" src="assets/images/company-logo/company-logo-8.png" alt=""></div>
-                                    </div>
-                                    <!-- End Company Logo Single Item -->
-                                </div>
-                            </div>
+                                </ng-template>
+                                </ng-container>
+                            
+                            </owl-carousel-o>
+                            
                             <!-- If we need navigation buttons -->
-                            <div class="swiper-button-prev d-none d-md-block"></div>
-                            <div class="swiper-button-next d-none d-md-block"></div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+ 

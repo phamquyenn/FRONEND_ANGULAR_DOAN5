@@ -54,18 +54,5 @@ export class AuthenticationService {
     return this.http.get(`${host}/login/admin-info`, { headers });
   }
 
-  // Lấy danh sách đơn hàng
-  getOrders(token: string): Observable<any[]> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    });
-
-    return this.http.get<any[]>(`${host}/order/getall`, { headers }).pipe(
-      catchError((error) => {
-        console.error('Lỗi khi truy xuất đơn hàng:', error);
-        throw error;
-      })
-    );
-  }
+  
 }

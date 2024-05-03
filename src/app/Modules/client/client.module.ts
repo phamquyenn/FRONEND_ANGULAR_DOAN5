@@ -22,6 +22,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { SuccessComponent } from './success/success.component';
+import { OrderedComponent } from './ordered/ordered.component';
 
 
 
@@ -42,6 +44,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     PaymentComponent,
     FavoritesComponent,
     AboutUsComponent,
+    SuccessComponent,
+    OrderedComponent,
 
    
   ],
@@ -51,7 +55,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
         ReactiveFormsModule,
         NgxPaginationModule,
         FormsModule,
-    CarouselModule
+        CarouselModule,
 
 
     ],

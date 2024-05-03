@@ -32,18 +32,11 @@
                     <!-- Start Sidebar Area -->
                     <div class="siderbar-section" data-aos="fade-up"  data-aos-delay="0">
 
-                        <!-- Start Single Sidebar Widget -->
-                        <div class="sidebar-single-widget" >
-                            <h6 class="sidebar-title">Tìm kiếm</h6>
-                            <div class="default-search-style d-flex">
-                                <input class="default-search-style-input-box" type="search" placeholder="Tìm..." required>
-                                <button class="default-search-style-input-btn" type="submit"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div> <!-- End Single Sidebar Widget -->
+                       
 
                         <!-- Start Single Sidebar Widget -->
                         <div class="sidebar-single-widget" >
-                            <h6 class="sidebar-title">Thương Hiệu</h6>
+                            <h4 class="sidebar-title">Thương Hiệu</h4>
                             <div class="sidebar-content">
                                 <ul *ngFor="let new of brands" class="sidebar-menu">
                                    <li ><a href="#">{{ new.name }}</a></li>
@@ -55,7 +48,7 @@
 
                         <!-- Start Single Sidebar Widget -->
                         <div class="sidebar-single-widget" >
-                            <h6 class="sidebar-title">Loại Nước Hoa</h6>
+                            <h4 class="sidebar-title">Loại Nước Hoa</h4>
                             <div class="sidebar-content">
                                 <ul *ngFor="let loai of category" class="sidebar-menu">
 
@@ -69,29 +62,28 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="blog-wrapper">
-                        <div *ngFor="let news of blogs" class="row mb-n6">
-                            <div class="col-12 mb-6">
+                        <div  class="row mb-n6">
+                            <div class="col-12 mb-6" *ngFor=" let all of blogs | paginate: { itemsPerPage: 2, currentPage: p }">
                                 <!-- Start Product Default Single Item -->
+                                
                                 <div class="blog-list blog-list-single-item blog-color--golden" data-aos="fade-up"  data-aos-delay="0">
                                     <div class="row">
                                         <div class="col-xl-5 col-md-6">
                                             <div class="image-box">
                                                 <a href="blog-single-sidebar-left.html" class="image-link">
-                                                    <!-- <img class="img-fluid" src="assets/images/banner/{{ news.image_url }}" alt=""> -->
-                                                     <img [src]="getProductImageUrl(news.image_url)" alt="{{ news.image_url}}" />
-
+                                                     <img [src]="getProductImageUrl(all.image_url)" alt="{{ all.image_url}}" />
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="col-xl-7 col-md-6">
                                             <div class="content">
                                                 <ul class="post-meta">
-                                                   <li>POSTED BY : <a href="#" class="author">Phạm Quyền</a></li> 
-                                                   <li>ON : <a href="#" class="date">{{ news.date_published }}</a></li> 
+                                                   <li>Đăng bởi : <a href="#" class="author">Phạm Quyền</a></li> 
+                                                   <li>thời gian : <a href="#" class="date">{{ all.date_published }}</a></li> 
                                                 </ul>
-                                                <h6 class="title"><a href="blog-single-sidebar-left.html"> {{ news.title }}</a></h6>
-                                                <p>{{ news.content }}</p>
-                                                <a href="#" class="read-more-btn icon-space-left">Read More <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
+                                                <h6 class="title"><a href="blog-single-sidebar-left.html"> {{ all.title }}</a></h6>
+                                                <p>{{ all.content }}</p>
+                                                <a href="#" class="read-more-btn icon-space-left">Đọc thêm <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -102,13 +94,9 @@
                         </div>
                     </div>
                     <!-- Start Pagination -->
+                    
                     <div class="page-pagination text-center" data-aos="fade-up"  data-aos-delay="0">
-                        <ul>
-                            <li><a class="active" href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#"><i class="ion-ios-skipforward"></i></a></li>
-                        </ul>
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
                     </div> <!-- End Pagination -->
                 </div>
             </div>

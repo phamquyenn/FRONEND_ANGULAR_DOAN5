@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 const host = "http://localhost:3000";
 @Injectable({
@@ -15,7 +15,12 @@ export class UserService {
 
   // Kiểm tra đăng nhập
   checkLogin(data:any){
-    return this.http.post<any>(`${host}/login/client-login`, data);
+    return this.http.post<any>(`${host}/login/client-login`, data)
+    .pipe(
+      tap(res =>{
+      sessionStorage.setItem('userInfo', JSON.stringify(res.userInfo));
+      this.setToken(res.token);
+    }));
   }
 
   // Đăng ký

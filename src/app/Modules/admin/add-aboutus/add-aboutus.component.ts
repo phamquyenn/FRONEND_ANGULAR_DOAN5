@@ -33,6 +33,7 @@ export class AddAboutusComponent {
     reader.onload = (e: any)=>{
       this.preview = e.target.result;
     }
+    console.log(this.file.name)
   }
   getImageUrl(Image: string): void {
     this.add.getImageUrl(Image)

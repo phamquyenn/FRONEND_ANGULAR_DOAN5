@@ -24,11 +24,7 @@ export class HeaderClientComponent implements OnInit {
   constructor(private home: HomeGetDataService, private user: UserService, private router:Router, private route: ActivatedRoute ) {}
 
   ngOnInit(): void {
-    let storage = sessionStorage.getItem('userInfo');
-
-    if (storage) {
-      this.account = JSON.parse(storage);
-    }
+    this.account = this.user.getAccountInfo();
     this.cartItemCount = this.home.getCartItemCount();
     // 
     this.fetchAllDataForSearch();

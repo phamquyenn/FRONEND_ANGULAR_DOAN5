@@ -14,6 +14,7 @@ export class UpdateBrandComponent implements OnInit{
   file: any | null = null;
   preview: any | null = null;
   id: string | null = null;
+  ImageUrl: string | null = null;
 
   profileForm: FormGroup;
 
@@ -42,13 +43,14 @@ export class UpdateBrandComponent implements OnInit{
       if (this.id) {
         this.Title = 'Cập Nhật thương hiệu';
 
-        // Lấy thông tin sản phẩm và hiển thị hình ảnh
+        
         this.update.getonceBrand(this.id).subscribe((res) => {
-          const Upro = res[0];
-          this.getImageUrl(Upro.product_image);
+          const brand = res[0];
+          console.log(brand)
+          this.ImageUrl = brand.brand_image;
 
-          // Đặt giá trị cho form
-          this.profileForm.patchValue(Upro);
+          this.getImageUrl(brand.Brand_id);
+          this.profileForm.patchValue(brand);
         });
       } else {
         this.Title = 'Thêm Thương Hiệu Mới';
@@ -67,16 +69,19 @@ export class UpdateBrandComponent implements OnInit{
     }
   }
 
-  getImageUrl(productImage: string): void {
-    this.update.getImageUrl(productImage).subscribe(
+  getImageUrl(filename: string): void {
+    this.update.getImageUrl(filename).subscribe(
       (imageUrl) => {
         this.preview = imageUrl;
+        
       },
       (error) => {
-        console.error('Error getting image URL:', error);
+        console.error('Lỗi khi lấy ảnh thương hiệu:', error);
       }
     );
   }
+
+
   onSubmit(){
     if (!this.id) {
       console.error('Thương hiệu không tồn tại.');
@@ -88,7 +93,7 @@ export class UpdateBrandComponent implements OnInit{
     for (const key in brandData) {
       formData.append(key, brandData[key]);
     }
-    formData.append('brand_image', this.file);
+    formData.append('brand_image', this.file || this.ImageUrl);
 
     this.update.updateBrand(this.id, formData).subscribe(
       (data) => {

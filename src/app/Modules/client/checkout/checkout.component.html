@@ -31,7 +31,7 @@
             <div class="checkout_form" data-aos="fade-up"  data-aos-delay="400">
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <form  (ngSubmit)="onSubmit()" >
+                        <form  [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
                             <h3>Chi tiết thông tin người dùng </h3>
                             <div class="row">
                                 <div class="col-lg-6">
@@ -62,7 +62,7 @@
                                 <div class="col-lg-12">
                                     <div class="default-form-box">
                                         <label for="shippingAddress">Địa chỉ nhận hàng <span>*</span></label>
-                                        <input type="text" id="shippingAddress" name="shippingAddress" [(ngModel)]="shippingAddress">
+                                        <input type="text" id="shippingAddress" name="shippingAddress" formControlName="shippingAddress">
                                     </div>
                                 </div>
                             </div>
@@ -84,22 +84,24 @@
                                            </td>
                                             <td> ${{ cart.name }} </td>
                                             <td> {{ cart.quantity }}</td>
-                                            <td> ${{ cart.price }}</td>
+                                            <td> ${{ cart.price | number:'1.0-0'}}</td>
                                         </tr>
                                         
                                     </tbody>
                                     <tfoot>
                                         <tr >
                                             <th>Tiền</th>
-                                            <td >${{ totalPrice }}.00</td>
+                                            <td >
+                                                <strong>{{ totalPrice | number:'1.0-0'}}vnd</strong>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>Tiền ship</th>
-                                            <td><strong>${{ ship }}.00</strong></td>
+                                            <td><strong>{{ ship | number:'1.0-0'}}vnd</strong></td>
                                         </tr>
                                         <tr class="order_total">
                                             <th>Tổng tiền</th>
-                                            <td ><strong>${{ totalOrder }}.00</strong></td>
+                                            <td ><strong>{{ totalOrder | number:'1.0-0' }} vnd</strong></td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -112,10 +114,10 @@
                                         <span>Thanh Toán Online</span>
                                     </label>
                                     <div id="methodPayment" value="Chọn Phương thức thanh toán" class="collapse" data-parent="#methodPayment">
-                                        <select class="form-select" id="paymentMethod" [(ngModel)]="selectedPaymentMethod">
-                                            <option value="VNPAY">Thanh toán VNPAY</option>
-                                            <option value="MOMO">Thanh toán MOMO</option>
-                                            <option value="COD">Thanh toán COD</option>
+                                        <select class="form-select" formControlName="method" >
+                                            <option value="VNPAY">VNPAY</option>
+                                            <!-- <option  id="MOMO"name="MOMO" formControlName="MOMO">MOMO</option>
+                                            <option  id="COD"name="COD" formControlName="COD"> COD</option> -->
                                         </select>
                                     </div>
                                 </div>

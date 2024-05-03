@@ -14,7 +14,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { UpdateBlogComponent } from './update-blog/update-blog.component';
 import { UpdateBrandComponent } from './update-brand/update-brand.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
-import { RegisterComponent } from './register/register.component';
+// import { RegisterComponent } from './register/register.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
@@ -22,15 +22,16 @@ import { AuthGuardService } from 'src/app/services/admin/auth-gaurd.service';
 import { AddAboutusComponent } from './add-aboutus/add-aboutus.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { UpdateAboutusComponent } from './update-aboutus/update-aboutus.component';
+import { OrderComponent } from './order/order.component';
 
 
 
 
 const routes: Routes = [
-  {
-    path:'register',
-    component:RegisterComponent
-  },
+  // {
+  //   path:'register',
+  //   component:RegisterComponent
+  // },
 
   {
     path:'dashbroad',
@@ -113,6 +114,10 @@ const routes: Routes = [
   {
     path:'update-aboutus/:id',
     component:UpdateAboutusComponent
+  },
+  {
+    path:'order',
+    component:OrderComponent
   },
 ];
 

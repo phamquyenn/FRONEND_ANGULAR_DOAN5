@@ -22,7 +22,7 @@ export class BlogAdminComponent implements OnInit {
   ngOnInit(): void {
     
     this.blogview();
-    this.Title ="Danh Sách Sản Phẩm "
+    this.Title ="Danh Sách "
   }
   blogview(){
     this.blog.getblog().subscribe(res=>{

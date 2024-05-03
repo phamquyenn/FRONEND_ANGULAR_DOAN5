@@ -5,6 +5,7 @@ import { ProductsService } from 'src/app/services/admin/products.service';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
 import { UserService } from 'src/app/services/client/user.service';
 import { VnpayService } from 'src/app/services/client/vnpay.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -16,33 +17,31 @@ export class CheckoutComponent implements OnInit{
   carts: any = [];
   cartImage: string='';
   ship = 5;
-  account: any = {}; 
-  paymentMethod: any = ''; 
-  selectedPaymentMethod: string = 'VNPAY';
-  shippingAddress: any='';
-
-
-  profileForm: FormGroup = new FormGroup({
-    amount: new FormControl(''),
-  });
-
+  account: any = {};
+  profileForm: FormGroup;
   
+
   constructor( private app: HomeGetDataService,
                 private image:ProductsService, 
                 private router:Router, 
-                private vnpay:VnpayService
-              ){}
+                private vnpay:VnpayService,
+                private formBuilder: FormBuilder
+              ){
+                this.profileForm = this.formBuilder.group({
+                  shippingAddress: ['', Validators.required],
+                  method: ['', Validators.required]
+                });
+              }
   ngOnInit(): void {
-    this.ship = 5;
+    this.ship = 5000;
     // cart
     this.carts = this.app.getcarts();
-
     // user
     let storage =sessionStorage.getItem('userInfo')
     if(storage){
       this.account = JSON.parse(storage);
-      
     }
+    
   }
   
   //Tổng số lượng
@@ -76,27 +75,41 @@ export class CheckoutComponent implements OnInit{
     return `http://localhost:3000/image/getproductimage/${filename}`;
     
   }
-  
   onSubmit( ) {
+    const shippingAddress: any = this.profileForm.value.shippingAddress;
+    const method: any  = this.profileForm.value.method;
+
+    const productIds: string[] = [];
+    const quantities: number[] = [];
+    const price: number[] = [];
+
+  
+    for (const cartItem of this.carts) {
+      productIds.push(cartItem.id);
+      quantities.push(cartItem.quantity);
+      price.push(cartItem.price);
+    }
+
+    // 
     const paymentData = {
-      amount: this.totalOrder,
-      customer_name: this.account.name,
-      customer_address: this.account.address,
-      customer_phone: this.account.phone,
-      customer_email: this.account.email,
-      shippingAddress: this.shippingAddress,
-      products: this.carts,
+      // amount: this.totalOrder,
+      price: price,
+      customer_id: this.account.customer_id,
+      shipAddress: shippingAddress,
+
+      products_id: productIds, 
+      quantity: quantities,
+
       language: 'vn',
-      payment_method: this.selectedPaymentMethod 
+      payment_method: method
     };
+   
     this.vnpay.createPaymentUrl(paymentData).subscribe(
       data => {
-        
         window.location.href = data.vnpUrl;
       },
       error => {
         console.error('Lỗi khi gọi API:', error);
-       
       }
     );
   }

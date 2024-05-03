@@ -51,32 +51,35 @@
                                         <th>Đơn</th>
                                         <th>Ngày</th>
                                         <th>Trạng thái</th>
-                                        <th>Tổng </th>
-                                        <th>Chi tiết </th>
+                                        <th>Số lượng</th>
+                                        
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>May 10, 2018</td>
-                                        <td><span class="success">Completed</span></td>
-                                        <td>$25.00 for 1 item </td>
-                                        <td><a href="cart.html" class="view">view</a></td>
+                                    <tr  *ngFor="let order of customerOrder ; let i=index">
+                                        <td class="serial">{{ i+1 }}</td>
+                                        <td>{{ order.order_date  | date:'dd/MM/yyyy' }}</td>
+                                        <td><span class="success">{{ order.order_status }}</span></td>
+                                        <td> {{ order.total_quantity }}</td>
+                                      
+                                       
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>May 10, 2018</td>
-                                        <td>Processing</td>
-                                        <td>$17.00 for 1 item </td>
-                                        <td><a href="cart.html" class="view">view</a></td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="payment_method">
+                            <div class="order_button pt-3">
+                                <a class="btn btn-md btn-black-default-hover" routerLink="/client/order" >Xem chi tiết </a>
+                                
+                            </div>
+                            
                         </div>
                     </div>
                     
                     <div class="tab-pane" id="address">
-                        <p>Địa chỉ sẽ được sử dụng trên trang thanh toán theo mặc định.</p>
+                        <p>Địa chỉ sẽ được sử dụng trên trang thanh toán.</p>
                         <address>
                             {{ account.address }}<br>
                         </address>
@@ -88,33 +91,28 @@
                             <div class="login_form_container">
                                 <div class="account_login_form">
                                     <form action="#">
-                                        
-                                        <div class="input-radio">
-                                            <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Nam</span>
-                                            <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Nữ</span>
-                                        </div> <br>
-                                        <div class="default-form-box mb-20">
-                                            <label>Họ và Tên</label>
-                                            <input type="text" name="first-name" value="{{ account.name }}">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="default-form-box mb-20">
+                                                    <label>Họ và Tên</label>
+                                                    <input type="text" name="first-name" value="{{ account.name }}">
+                                                </div>
+                                                <div class="default-form-box mb-20">
+                                                    <label>Email</label>
+                                                    <input type="text" name="email" value="{{ account.email }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="default-form-box mb-20">
+                                                    <label>Địa chỉ</label>
+                                                    <input type="text" name="address" value="{{ account.address}}">
+                                                </div>
+                                                <div class="default-form-box mb-20">
+                                                    <label>Số Điện Thoại</label>
+                                                    <input type="number" name="user-number" value="{{ account.phone}}">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="default-form-box mb-20">
-                                            <label>Email</label>
-                                            <input type="text" name="email" value="{{ account.email }}">
-                                        </div>
-                                        <div class="default-form-box mb-20">
-                                            <label>Mật khẩu</label>
-                                            <input type="password" name="user-password" value="{{ account.password}}">
-                                        </div>
-                                        <div class="default-form-box mb-20">
-                                            <label>Số Điện Thoại</label>
-                                            <input type="number" name="user-number" value="{{ account.phone}}">
-                                        </div>
-                                        <!-- <div class="default-form-box mb-20">
-                                            <label>Ngày sinh</label>
-                                            <input type="date" name="birthday">
-                                        </div> -->
-
-            
                                         <div class="save_button mt-3">
                                             <button class="btn btn-md btn-black-default-hover" type="submit">Sửa</button>
                                         </div>

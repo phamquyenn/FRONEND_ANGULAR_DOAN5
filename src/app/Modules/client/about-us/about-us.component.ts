@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AboutusService } from 'src/app/services/admin/aboutus.service';
 import { ProductsService } from 'src/app/services/admin/products.service';
 import { HomeGetDataService } from 'src/app/services/client/product.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+
 
 @Component({
   selector: 'app-about-us',
@@ -10,9 +12,20 @@ import { HomeGetDataService } from 'src/app/services/client/product.service';
 })
 export class AboutUsComponent {
 
-  constructor(private aboutus:AboutusService, private image: ProductsService){}
+  constructor(private aboutus:AboutusService, private image: ProductsService, private brand: HomeGetDataService){}
   about: any[]=[];
   blogImage: string ='';
+  brands:  any[] = [];
+// 
+customOptions: OwlOptions = {
+  loop: true,
+  items:4,
+  margin: 10,
+  autoplay: true,
+  center:true,
+  dots: false,
+  navSpeed: 700,
+};
 
 // 
   ngOnInit(){
@@ -21,6 +34,9 @@ export class AboutUsComponent {
       this.about =res;
       console.log(this.about)
       
+    }),
+    this.brand.getbrand().subscribe(res => {
+      this.brands = res;
     });
   }
   // 
@@ -39,5 +55,8 @@ export class AboutUsComponent {
   getImageUrl(filename: string): string {
     return `http://localhost:3000/about/getimage/${filename}`;
     
+  }
+  getImageUrlBrand(filename: string): string {
+    return `http://localhost:3000/image/getproductimage/${filename}`;
   }
 }

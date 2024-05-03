@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/client/user.service';
 import Swal from 'sweetalert2';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +16,7 @@ export class HomeComponent {
 
   
 
-  constructor(private Favo:FavoritesService ,private product: HomeGetDataService, private image: ProductsService, private user:UserService) { }
+  constructor(private Favo:FavoritesService ,private product: HomeGetDataService, private user:UserService) { }
   products: any[] = [];
   brand: any[] = [];
   blog: any[] = [];
@@ -35,7 +36,20 @@ export class HomeComponent {
     navSpeed: 700,
   };
   
-  
+  customSliderOptions: any = {
+    loop: true,
+    items:1,
+    center:true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    responsive: {
+        0: {
+            items: 1
+        },
+
+    }
+  };
 
   productImage: string = '';
 
@@ -44,7 +58,6 @@ export class HomeComponent {
 
     this.product.getnew().subscribe(res => {
       this.products = res[0];
-      console.log(this.products)
       
     });
 
@@ -57,13 +70,12 @@ export class HomeComponent {
     });
     this.product.getbestsale().subscribe(res =>{
       this.bestsale =res[0]
-      console.log(this.bestsale)
 
     })
   }
   // 
   loadProductImage(filename: any) {
-    this.image.getProductImage(filename).subscribe(
+    this.product.getbrandImageUrl(filename).subscribe(
       (response: any) => {
         this.productImage = response.filename;
       },
@@ -75,6 +87,10 @@ export class HomeComponent {
 
   getProductImageUrl(filename: string): string {
     return `http://localhost:3000/image/getproductimage/${filename}`;
+    
+  }
+  getImageUrl(filename: string): string {
+    return `http://localhost:3000/brand/getimage/${filename}`;
     
   }
   // yêu thích

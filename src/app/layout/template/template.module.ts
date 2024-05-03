@@ -11,6 +11,7 @@ import { PartialModule } from '../partial/partial.module';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RegisterAdminComponent } from './register-admin/register-admin.component';
 
 
 
@@ -19,7 +20,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     declarations:[
     LayoutClientComponent,
     LayoutAdminComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    RegisterAdminComponent
   ],
     imports:[
   
